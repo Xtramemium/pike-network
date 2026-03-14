@@ -1,0 +1,369 @@
+.page {
+  min-height: 100vh;
+}
+
+.heroInner {
+  width: min(1180px, calc(100% - 32px));
+  min-height: 88svh;
+  margin: 0 auto;
+  padding: 22px 0 34px;
+  display: grid;
+  align-content: space-between;
+  gap: 24px;
+}
+
+.heroTopline {
+  width: 100%;
+}
+
+.heroCopy {
+  max-width: 33rem;
+  padding: 24px 24px 26px;
+  border: 1px solid rgba(255, 244, 230, 0.12);
+  background:
+    linear-gradient(180deg, rgba(14, 11, 10, 0.14), rgba(14, 11, 10, 0.38)),
+    radial-gradient(circle at top left, rgba(209, 161, 90, 0.04), transparent 30%);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.22);
+}
+
+.kicker,
+.sectionKicker,
+.infoCardStatus {
+  color: var(--color-accent);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+}
+
+.heroCopy h1,
+.sectionHeading h2,
+.overviewCard h2,
+.contactsCard h2,
+.infoCard h3 {
+  font-family: var(--font-display), serif;
+}
+
+.heroCopy h1 {
+  margin-top: 14px;
+  font-size: clamp(3.4rem, 12vw, 6.2rem);
+  line-height: 0.88;
+  text-wrap: balance;
+}
+
+.heroSubtitle {
+  max-width: 16ch;
+  margin-top: 16px;
+  font-size: clamp(1.14rem, 2.7vw, 1.72rem);
+  color: #fff2dc;
+  line-height: 1.1;
+}
+
+.heroDescription,
+.sectionHeading p,
+.infoCard p,
+.overviewCard p,
+.contactsCopy {
+  margin-top: 16px;
+  color: var(--color-text-muted);
+  line-height: 1.58;
+}
+
+.heroMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.heroMeta span {
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 244, 230, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.primaryAction,
+.secondaryAction,
+.contactTile a,
+.placeholderLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.primaryAction {
+  background: linear-gradient(135deg, #f0bf71, #d59a48);
+  color: #140e0b;
+}
+
+.secondaryAction,
+.placeholderLink,
+.contactTile a {
+  border: 1px solid rgba(255, 244, 230, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.main {
+  width: min(1160px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 44px 0 72px;
+}
+
+.section {
+  padding: 28px 0;
+}
+
+.overviewCard,
+.infoCard,
+.contactsCard,
+.identityCard,
+.bestForCard {
+  border: 1px solid var(--color-border);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+    rgba(18, 12, 10, 0.44);
+  box-shadow: var(--shadow-soft);
+}
+
+.overviewCard,
+.contactsCard,
+.identityCard,
+.bestForCard {
+  display: grid;
+  gap: 24px;
+  padding: 26px;
+}
+
+.overviewCard h2,
+.sectionHeading h2,
+.contactsCard h2 {
+  margin-top: 12px;
+  font-size: clamp(2.3rem, 6vw, 4rem);
+  line-height: 0.96;
+}
+
+.factsList {
+  display: grid;
+  gap: 16px;
+  list-style: none;
+}
+
+.factsList li,
+.contactTile {
+  padding: 18px;
+  border: 1px solid rgba(255, 244, 230, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.factsList span,
+.contactTile span {
+  display: block;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.factsList strong,
+.contactTile strong {
+  display: block;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.sectionHeading {
+  max-width: 44rem;
+}
+
+.cardGrid,
+.galleryGrid,
+.contactsGrid {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.identityGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.bestForList {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+}
+
+.bestForItem {
+  padding: 18px;
+  border-left: 2px solid rgba(209, 161, 90, 0.4);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.identityItem {
+  padding: 18px;
+  border: 1px solid rgba(255, 244, 230, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.identityItem span {
+  display: block;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+}
+
+.identityItem strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.infoCard {
+  padding: 22px;
+}
+
+.infoCard h3 {
+  margin-top: 12px;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  line-height: 0.96;
+}
+
+.eventTiming {
+  margin-top: 14px;
+  color: var(--color-accent-strong);
+  font-size: 0.9rem;
+}
+
+.previewChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.previewChip {
+  display: grid;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 244, 230, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.previewChip strong {
+  font-size: 0.92rem;
+}
+
+.previewChip em {
+  color: var(--color-text-muted);
+  font-style: normal;
+  font-size: 0.8rem;
+}
+
+.infoCard a,
+.placeholderLink {
+  margin-top: 20px;
+}
+
+.galleryItem {
+  position: relative;
+  min-height: 260px;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.galleryImage {
+  object-fit: cover;
+}
+
+.contactsSection {
+  padding-bottom: 12px;
+}
+
+.contactsGrid {
+  margin-top: 0;
+}
+
+.socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primaryAction:hover,
+  .secondaryAction:hover,
+  .contactTile a:hover,
+  .placeholderLink:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 244, 230, 0.24);
+  }
+}
+
+@media (min-width: 760px) {
+  .cardGrid,
+  .galleryGrid,
+  .contactsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .identityGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .galleryItem:nth-child(4n + 1) {
+    grid-column: span 2;
+    min-height: 380px;
+  }
+}
+
+@media (min-width: 960px) {
+  .heroInner {
+    width: min(1220px, calc(100% - 40px));
+    padding: 26px 0 42px;
+    gap: 32px;
+  }
+
+  .heroCopy {
+    max-width: 31rem;
+    margin-left: 12px;
+    padding: 28px 28px 30px;
+  }
+
+  .overviewCard,
+  .contactsCard,
+  .identityCard,
+  .bestForCard {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryAction,
+  .secondaryAction,
+  .contactTile a,
+  .placeholderLink {
+    transition: none;
+  }
+}

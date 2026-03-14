@@ -1,33 +1,39 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --color-background: #120d0b;
+  --color-background-soft: #1b1411;
+  --color-surface: rgba(34, 24, 20, 0.76);
+  --color-surface-strong: rgba(18, 12, 10, 0.9);
+  --color-border: rgba(237, 226, 207, 0.12);
+  --color-text: #f4ece1;
+  --color-text-muted: rgba(244, 236, 225, 0.72);
+  --color-accent: #d1a15a;
+  --color-accent-strong: #e0b36d;
+  --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.28);
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at top, rgba(209, 161, 90, 0.12), transparent 30%),
+    linear-gradient(180deg, #1a120f 0%, #120d0b 36%, #0d0908 100%);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  display: block;
 }
 
 a {
@@ -35,8 +41,18 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: rgba(209, 161, 90, 0.36);
 }

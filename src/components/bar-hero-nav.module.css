@@ -1,0 +1,200 @@
+.desktopRow,
+.mobileRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.backLink,
+.phoneInline,
+.desktopNav a,
+.mobilePhone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 244, 230, 0.16);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--color-text-muted);
+  backdrop-filter: blur(12px);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.backLink,
+.phoneInline {
+  white-space: nowrap;
+}
+
+.desktopNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+.phoneInline {
+  margin-left: auto;
+}
+
+.mobileRow {
+  display: none;
+}
+
+.menuToggle,
+.closeButton {
+  border: 1px solid rgba(255, 244, 230, 0.16);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--color-text);
+}
+
+.menuToggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  backdrop-filter: blur(12px);
+}
+
+.menuToggle span {
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+}
+
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 5, 4, 0.42);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+  z-index: 40;
+}
+
+.mobileOverlayOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobilePanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 50;
+  height: 100svh;
+  width: min(320px, 88vw);
+  padding: 20px;
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  background:
+    linear-gradient(180deg, rgba(18, 12, 10, 0.96), rgba(12, 9, 8, 0.96)),
+    rgba(12, 9, 8, 0.96);
+  border-left: 1px solid rgba(255, 244, 230, 0.1);
+  transform: translateX(100%);
+  transition: transform 220ms ease;
+  box-shadow: -18px 0 48px rgba(0, 0, 0, 0.34);
+}
+
+.mobilePanelOpen {
+  transform: translateX(0);
+}
+
+.mobileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mobileHeader p {
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.74rem;
+}
+
+.closeButton {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.mobileNav {
+  display: grid;
+  gap: 10px;
+}
+
+.mobileNav a,
+.mobilePhone {
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 244, 230, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.mobilePhone {
+  margin-top: 8px;
+}
+
+@media (max-width: 479px) {
+  .mobilePanel {
+    width: 100%;
+    max-width: none;
+    border-left: 0;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .backLink:hover,
+  .phoneInline:hover,
+  .desktopNav a:hover,
+  .mobilePhone:hover,
+  .mobileNav a:hover,
+  .menuToggle:hover,
+  .closeButton:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 244, 230, 0.24);
+    color: var(--color-text);
+  }
+}
+
+@media (max-width: 959px) {
+  .desktopRow {
+    display: none;
+  }
+
+  .mobileRow {
+    display: flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backLink,
+  .phoneInline,
+  .desktopNav a,
+  .mobilePhone,
+  .mobileNav a,
+  .menuToggle,
+  .closeButton,
+  .mobileOverlay,
+  .mobilePanel {
+    transition: none;
+  }
+}
