@@ -82,8 +82,6 @@ export default async function BarPage({ params }) {
             <div className={styles.heroCopy}>
             <p className={styles.kicker}>{bar.hero.eyebrow}</p>
             <h1>{bar.hero.title}</h1>
-            <p className={styles.heroSubtitle}>{bar.hero.subtitle}</p>
-            <p className={styles.heroDescription}>{bar.hero.description}</p>
 
             <div className={styles.heroMeta}>
               <span>{bar.addressLine}</span>

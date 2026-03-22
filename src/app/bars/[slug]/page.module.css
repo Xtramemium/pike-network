@@ -66,15 +66,6 @@
   text-transform: uppercase;
 }
 
-.heroSubtitle {
-  max-width: 20ch;
-  margin-top: 18px;
-  font-size: clamp(1.06rem, 2vw, 1.36rem);
-  color: var(--base-paper-soft);
-  line-height: 1.18;
-}
-
-.heroDescription,
 .sectionHeading p,
 .infoCard p,
 .overviewCard p,
@@ -88,7 +79,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
-  margin-top: 18px;
+  margin-top: 14px;
 }
 
 .heroMeta span {
@@ -101,7 +92,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  margin-top: 30px;
+  margin-top: 22px;
 }
 
 .primaryAction,
@@ -422,19 +413,9 @@
     line-height: 0.94;
   }
 
-  .heroSubtitle {
-    max-width: 18ch;
-    margin-top: 14px;
-    font-size: clamp(1rem, 4.6vw, 1.22rem);
-  }
-
-  .heroDescription {
-    margin-top: 14px;
-    font-size: 0.98rem;
-  }
-
   .heroMeta {
     gap: 12px;
+    margin-top: 12px;
   }
 
   .heroMeta span {
@@ -445,6 +426,7 @@
   .actions {
     flex-direction: row;
     gap: 18px;
+    margin-top: 18px;
   }
 
   .primaryAction,
