@@ -52,6 +52,11 @@
   display: none;
 }
 
+.logo {
+  object-fit: contain;
+  filter: drop-shadow(0 16px 30px var(--shadow-dark-a24));
+}
+
 .heroCopy h1,
 .sectionHeading h2,
 .ctaCard h2,
@@ -505,21 +510,32 @@
     min-height: 100svh;
     padding-top: max(18px, env(safe-area-inset-top));
     padding-bottom: max(26px, env(safe-area-inset-bottom));
-    gap: 16px;
+    grid-template-rows: 1fr;
+    align-content: stretch;
+    gap: 0;
   }
 
   .heroBrand {
-    width: 72px;
+    display: none;
   }
 
   .heroStage {
     justify-content: flex-start;
-    align-items: end;
+    align-items: center;
   }
 
   .heroCopy {
     max-width: 100%;
     margin: 0;
+    padding: clamp(84px, 16svh, 136px) 0 0;
+  }
+
+  .logoWrap {
+    position: relative;
+    display: block;
+    width: 72px;
+    aspect-ratio: 1;
+    margin-bottom: 20px;
   }
 
   .heroCopy h1 {

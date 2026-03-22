@@ -82,7 +82,9 @@
   .hero,
   .content,
   .showcase,
-  .showcase .content {
+  .showcase .content,
+  .immersive,
+  .immersive .content {
     min-height: 100svh;
   }
 
