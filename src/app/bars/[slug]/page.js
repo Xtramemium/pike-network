@@ -9,6 +9,14 @@ import { getBarBySlug, getBars, getSiteData } from "@/lib/content/get-site-data"
 import { siteUrl } from "@/lib/site-url";
 import styles from "./page.module.css";
 
+function formatHeroLocation(bar) {
+  return bar.addressLine.replace(/^ул\.?\s*/i, "");
+}
+
+function formatHeroEyebrow(bar) {
+  return `Бар · ${bar.city}`;
+}
+
 function buildBarSchema(bar) {
   return {
     "@context": "https://schema.org",
@@ -55,6 +63,9 @@ export default async function BarPage({ params }) {
     notFound();
   }
 
+  const heroEyebrow = formatHeroEyebrow(bar);
+  const heroLocation = formatHeroLocation(bar);
+
   return (
     <div className={styles.page}>
       <JsonLd data={buildBarSchema(bar)} />
@@ -80,12 +91,14 @@ export default async function BarPage({ params }) {
 
           <div className={styles.heroStage}>
             <div className={styles.heroCopy}>
-            <p className={styles.kicker}>{bar.hero.eyebrow}</p>
-            <h1>{bar.hero.title}</h1>
+            <p className={styles.kicker}>{heroEyebrow}</p>
+            <h1>{bar.name.replace(/^Бар\s+/i, "")}</h1>
+            <p className={styles.heroLocation}>{heroLocation}</p>
 
             <div className={styles.heroMeta}>
-              <span>{bar.addressLine}</span>
-              <span>{bar.hours[0]}</span>
+              {bar.hours.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
             </div>
 
             <div className={styles.actions}>

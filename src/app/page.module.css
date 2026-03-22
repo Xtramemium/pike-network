@@ -212,9 +212,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(135deg, var(--white-a1), transparent 28%),
-    radial-gradient(circle at top, var(--white-a06), transparent 46%);
+  background: linear-gradient(135deg, var(--white-a1), transparent 28%);
   pointer-events: none;
 }
 
@@ -238,9 +236,7 @@
 .cardMediaScrim {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, var(--ink-a08), rgba(0, 0, 0, 0.52)),
-    radial-gradient(circle at top right, var(--gold-a14), transparent 34%);
+  background: linear-gradient(180deg, var(--ink-a08), rgba(0, 0, 0, 0.52));
 }
 
 .cardMediaLabel {
@@ -475,7 +471,6 @@
   gap: 22px;
   padding: 30px;
   background:
-    radial-gradient(circle at top left, var(--gold-a16), transparent 28%),
     linear-gradient(180deg, var(--white-a08), var(--white-a03)),
     var(--ink-a3);
 }

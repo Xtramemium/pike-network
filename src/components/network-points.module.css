@@ -124,7 +124,6 @@
   .pointOption:hover {
     border-color: var(--paper-border-a18);
     background:
-      radial-gradient(circle at top right, var(--gold-a14), transparent 46%),
       linear-gradient(180deg, var(--white-a08), var(--white-a03)),
       linear-gradient(180deg, var(--ink-a24), var(--ink-a34));
     box-shadow:

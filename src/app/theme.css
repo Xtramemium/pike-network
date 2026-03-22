@@ -136,13 +136,13 @@
   --glass-shadow: 0 24px 70px rgba(0, 0, 0, 0.2);
 
   /* Global background treatment */
-  --bg-gradient-top-glow: rgba(212, 106, 53, 0.1);
-  --bg-gradient-image-glow: rgba(239, 171, 139, 0.08);
+  --bg-gradient-top-glow: transparent;
+  --bg-gradient-image-glow: transparent;
   --bg-overlay-top: rgba(11, 9, 8, 0.48);
   --bg-overlay-bottom: rgba(11, 9, 8, 0.68);
   --bg-overlay-side: rgba(10, 8, 7, 0.38);
   --bg-overlay-side-soft: rgba(10, 8, 7, 0.08);
-  --bg-overlay-center-glow: rgba(212, 106, 53, 0.08);
+  --bg-overlay-center-glow: transparent;
   --footer-bg: rgba(16, 11, 9, 0.92);
   --overlay-scrim-soft: rgba(6, 5, 4, 0.42);
 
@@ -154,10 +154,10 @@
   --shadow-panel-hero: inset 0 1px 0 var(--white-a1), 0 34px 80px var(--shadow-dark-a22);
   --shadow-panel-bar: inset 0 1px 0 var(--white-a1), 0 24px 64px var(--shadow-dark-a22);
   --shadow-card-glass: inset 0 1px 0 var(--white-a08), var(--glass-shadow);
-  --shadow-primary: 0 12px 28px rgba(189, 77, 20, 0.24);
-  --shadow-primary-strong: 0 10px 22px rgba(189, 77, 20, 0.22);
-  --shadow-primary-hover: 0 18px 38px rgba(189, 77, 20, 0.3);
-  --shadow-primary-hover-strong: 0 20px 42px rgba(189, 77, 20, 0.34);
+  --shadow-primary: 0 12px 28px var(--shadow-dark-a22);
+  --shadow-primary-strong: 0 10px 22px var(--shadow-dark-a24);
+  --shadow-primary-hover: 0 18px 38px var(--shadow-dark-a28);
+  --shadow-primary-hover-strong: 0 20px 42px var(--shadow-dark-a3);
   --shadow-scrim-deep: 0 38px 90px var(--shadow-dark-a42);
   --shadow-scrim-soft: 0 18px 42px var(--shadow-dark-a2);
   --shadow-floating: inset 0 1px 0 var(--white-a08), 0 18px 34px var(--shadow-dark-a24);

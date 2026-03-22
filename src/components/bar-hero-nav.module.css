@@ -26,23 +26,6 @@
   transition: color var(--duration-medium) var(--ease-standard);
 }
 
-.mobilePhone {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 0 16px;
-  border: 1px solid transparent;
-  border-radius: 18px;
-  background:
-    linear-gradient(180deg, var(--white-a08), var(--white-a03)),
-    var(--white-a04);
-  color: var(--color-text-muted);
-  backdrop-filter: blur(14px) saturate(118%);
-  box-shadow: inset 0 1px 0 var(--white-a08);
-  transition: var(--transition-glass);
-}
-
 .backLink,
 .phoneInline {
   white-space: nowrap;
@@ -66,19 +49,22 @@
 
 .menuToggle,
 .closeButton {
-  border: 1px solid transparent;
+  border: 1px solid var(--paper-border-a16);
   background:
-    linear-gradient(180deg, var(--white-a08), var(--white-a03)),
-    var(--ink-a18);
+    linear-gradient(180deg, var(--white-a12), var(--white-a03)),
+    linear-gradient(180deg, var(--ink-a18), var(--ink-a26));
   color: var(--color-text);
-  backdrop-filter: blur(14px) saturate(118%);
-  box-shadow: inset 0 1px 0 var(--white-a08);
+  backdrop-filter: blur(18px) saturate(128%);
+  box-shadow:
+    inset 0 1px 0 var(--white-a12),
+    0 12px 28px var(--shadow-dark-a22);
   cursor: pointer;
+  transition: var(--transition-glass);
 }
 
 .menuToggle {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-pill);
   display: inline-flex;
   flex-direction: column;
@@ -97,7 +83,10 @@
 .mobileOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(6, 5, 4, 0.42);
+  background:
+    linear-gradient(180deg, rgba(9, 7, 6, 0.12), rgba(9, 7, 6, 0.5)),
+    linear-gradient(90deg, rgba(9, 7, 6, 0.22), rgba(9, 7, 6, 0.08) 48%, rgba(9, 7, 6, 0.22));
+  backdrop-filter: blur(22px) saturate(132%);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--duration-medium) var(--ease-standard);
@@ -112,77 +101,190 @@
 .mobilePanel {
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
+  bottom: 0;
   z-index: 50;
-  height: 100svh;
-  width: min(320px, 88vw);
-  padding: 20px;
-  display: grid;
-  align-content: start;
-  gap: 18px;
+  overflow: hidden;
+  overflow-y: auto;
+  width: 100vw;
+  max-width: none;
+  padding: calc(28px + env(safe-area-inset-top)) 28px calc(24px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  isolation: isolate;
   background:
-    linear-gradient(180deg, var(--white-a08), var(--white-a02)),
-    linear-gradient(180deg, var(--ink-a88), var(--ink-a92));
-  border-left: 1px solid var(--glass-border);
-  border-top-left-radius: var(--radius-panel);
-  border-bottom-left-radius: var(--radius-panel);
-  transform: translateX(100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05) 18%, rgba(255, 255, 255, 0.015) 100%),
+    linear-gradient(180deg, rgba(28, 22, 19, 0.52), rgba(12, 9, 8, 0.42));
+  border: 1px solid rgba(255, 248, 239, 0.18);
+  border-radius: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(calc(100% + 40px));
   transition:
+    opacity var(--duration-fast) var(--ease-standard),
+    visibility var(--duration-fast) var(--ease-standard),
     transform var(--duration-medium) var(--ease-standard),
     border-color var(--duration-medium) var(--ease-standard),
     background-color var(--duration-medium) var(--ease-standard),
     box-shadow var(--duration-medium) var(--ease-standard),
     backdrop-filter var(--duration-medium) var(--ease-standard);
-  backdrop-filter: blur(18px) saturate(118%);
-  box-shadow: var(--shadow-side-panel);
+  backdrop-filter: blur(34px) saturate(158%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+    0 32px 80px var(--shadow-dark-a34);
+}
+
+.mobilePanel::before,
+.mobilePanel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mobilePanel::before {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 18%);
+}
+
+.mobilePanel::after {
+  inset: 18px 22px auto;
+  height: 96px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 72%);
+  opacity: 0.72;
+  filter: blur(8px);
 }
 
 .mobilePanelOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   transform: translateX(0);
 }
 
 .mobileHeader {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
 }
 
 .mobileHeader p {
   color: var(--color-accent);
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
 }
 
 .closeButton {
-  width: 42px;
-  height: 42px;
+  width: 54px;
+  height: 54px;
   border-radius: var(--radius-pill);
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   line-height: 1;
 }
 
+.mobileBody {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  flex: 1 1 auto;
+}
+
 .mobileNav {
+  position: relative;
+  z-index: 1;
   display: grid;
-  gap: 10px;
-}
-
-.mobileNav a,
-.mobilePhone {
-  min-height: 48px;
-  padding: 0 16px;
-  border-radius: 18px;
-  border: 1px solid transparent;
-  background:
-    linear-gradient(180deg, var(--white-a08), var(--white-a03)),
-    var(--white-a04);
-  backdrop-filter: blur(14px) saturate(118%);
-  box-shadow: inset 0 1px 0 var(--white-a08);
-}
-
-.mobilePhone {
   margin-top: 8px;
+  border-top: 1px solid rgba(255, 248, 239, 0.1);
+}
+
+.mobileNav a + a {
+  border-top: 1px solid var(--paper-border-a12);
+}
+
+.mobileNavItem {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  min-height: 80px;
+  padding: 0 8px;
+  color: var(--base-paper-strong);
+  background: transparent;
+  transition: var(--transition-glass);
+}
+
+.mobileNavItem:hover,
+.mobileNavItem:focus-visible {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012));
+}
+
+.mobileNavItem::after {
+  content: "";
+  position: absolute;
+  right: 8px;
+  width: 34px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--paper-border-a24), transparent);
+  opacity: 0.62;
+  transition:
+    transform var(--duration-medium) var(--ease-standard),
+    opacity var(--duration-medium) var(--ease-standard);
+}
+
+.mobileNavIndex {
+  min-width: 2ch;
+  color: var(--color-accent);
+  font-size: 0.88rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.mobileNavLabel {
+  padding-right: 48px;
+  font-size: 1.18rem;
+  line-height: 1.1;
+}
+
+.mobilePhone {
+  min-height: auto;
+  margin-top: auto;
+  padding: 24px 8px 4px;
+  display: grid;
+  justify-content: start;
+  align-content: center;
+  gap: 10px;
+  text-align: left;
+  border-top: 1px solid rgba(255, 248, 239, 0.12);
+  background: none;
+  box-shadow: none;
+  transition: var(--transition-glass);
+}
+
+.mobilePhoneValue {
+  color: var(--base-paper-strong);
+  font-size: clamp(1.42rem, 4.6vw, 1.86rem);
+  line-height: 1.2;
+}
+
+.mobilePhoneLabel {
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
 }
 
 .backLink:focus-visible,
@@ -195,7 +297,7 @@
 }
 
 .mobilePhone:focus-visible,
-.mobileNav a:focus-visible,
+.mobileNavItem:focus-visible,
 .menuToggle:focus-visible,
 .closeButton:focus-visible {
   outline: none;
@@ -208,13 +310,16 @@
 
 @media (max-width: 479px) {
   .mobilePanel {
-    width: 100%;
-    max-width: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
     padding:
-      max(18px, env(safe-area-inset-top))
+      calc(22px + env(safe-area-inset-top))
       18px
-      max(24px, env(safe-area-inset-bottom));
-    border-left: 0;
+      calc(20px + env(safe-area-inset-bottom));
+    border-radius: 0;
   }
 }
 
@@ -228,14 +333,27 @@
   }
 
   .mobilePhone:hover,
-  .mobileNav a:hover,
+  .mobileNavItem:hover,
   .menuToggle:hover,
   .closeButton:hover {
     background:
-      linear-gradient(180deg, var(--white-a12), var(--white-a04)),
-      var(--ink-a2);
+      linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.035)),
+      linear-gradient(180deg, rgba(42, 35, 31, 0.26), rgba(18, 14, 12, 0.18));
     color: var(--color-text-strong);
-    box-shadow: inset 0 1px 0 var(--white-a14);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+      0 24px 46px var(--shadow-dark-a24);
+  }
+
+  .mobilePhone:hover {
+    background: none;
+    box-shadow: none;
+  }
+
+  .mobileNavItem:hover::after {
+    opacity: 1;
+    transform: translateX(4px);
   }
 }
 
@@ -261,29 +379,46 @@
 
   .menuToggle,
   .closeButton {
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
   }
 
   .mobileOverlay {
-    background: rgba(6, 5, 4, 0.58);
+    background:
+      linear-gradient(180deg, rgba(9, 7, 6, 0.16), rgba(9, 7, 6, 0.56)),
+      linear-gradient(90deg, rgba(9, 7, 6, 0.24), rgba(9, 7, 6, 0.08) 48%, rgba(9, 7, 6, 0.24));
   }
 
   .mobilePanel {
-    width: min(360px, 92vw);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
     padding:
-      max(18px, env(safe-area-inset-top))
-      18px
-      max(24px, env(safe-area-inset-bottom));
-    gap: 16px;
+      calc(26px + env(safe-area-inset-top))
+      22px
+      calc(22px + env(safe-area-inset-bottom));
+    gap: 22px;
+    border-radius: 0;
   }
 
-  .mobileNav a,
+  .mobileNavItem {
+    min-height: 74px;
+    padding: 0 6px;
+  }
+
   .mobilePhone {
-    min-height: 54px;
-    padding: 0 18px;
-    border-radius: 16px;
-    font-size: 1rem;
+    padding: 22px 6px 2px;
+  }
+
+  .mobileNavLabel {
+    padding-right: 40px;
+    font-size: 1.08rem;
+  }
+
+  .mobileNavItem::after {
+    right: 6px;
   }
 }
 
@@ -292,7 +427,7 @@
   .phoneInline,
   .desktopNav a,
   .mobilePhone,
-  .mobileNav a,
+  .mobileNavItem,
   .menuToggle,
   .closeButton,
   .mobileOverlay,

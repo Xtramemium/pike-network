@@ -59,11 +59,19 @@
 
 .heroCopy h1 {
   margin-top: 10px;
-  max-width: 9ch;
+  max-width: 7ch;
   font-size: clamp(4.2rem, 10vw, 7rem);
   line-height: 0.9;
   text-wrap: balance;
   text-transform: uppercase;
+}
+
+.heroLocation {
+  margin-top: 18px;
+  color: var(--base-paper-strong);
+  font-size: clamp(1.12rem, 2.3vw, 1.38rem);
+  line-height: 1.28;
+  letter-spacing: 0.04em;
 }
 
 .sectionHeading p,
@@ -78,13 +86,13 @@
 .heroMeta {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
-  margin-top: 14px;
+  gap: 10px 18px;
+  margin-top: 18px;
 }
 
 .heroMeta span {
-  color: var(--base-paper-strong);
-  font-size: 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
   font-weight: 500;
 }
 
@@ -163,9 +171,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(135deg, var(--white-a1), transparent 28%),
-    radial-gradient(circle at top, var(--white-a06), transparent 46%);
+  background: linear-gradient(135deg, var(--white-a1), transparent 28%);
   pointer-events: none;
 }
 
@@ -413,13 +419,18 @@
     line-height: 0.94;
   }
 
+  .heroLocation {
+    margin-top: 14px;
+    font-size: 1.04rem;
+    line-height: 1.32;
+  }
+
   .heroMeta {
     gap: 12px;
     margin-top: 12px;
   }
 
   .heroMeta span {
-    width: 100%;
     font-size: 0.98rem;
   }
 

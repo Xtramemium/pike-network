@@ -6,6 +6,12 @@ import styles from "./bar-hero-nav.module.css";
 
 export function BarHeroNav({ phoneDisplay, phoneE164 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const navItems = [
+    { href: "#menu", label: "Меню" },
+    { href: "#events", label: "События" },
+    { href: "#gallery", label: "Галерея" },
+    { href: "#contacts", label: "Контакты" },
+  ];
 
   useEffect(() => {
     if (!isOpen) {
@@ -44,10 +50,11 @@ export function BarHeroNav({ phoneDisplay, phoneE164 }) {
         </Link>
 
         <nav className={styles.desktopNav} aria-label="Разделы страницы бара">
-          <a href="#menu">Меню</a>
-          <a href="#events">События</a>
-          <a href="#gallery">Галерея</a>
-          <a href="#contacts">Контакты</a>
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href}>
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         <a className={styles.phoneInline} href={`tel:${phoneE164}`}>
@@ -96,24 +103,28 @@ export function BarHeroNav({ phoneDisplay, phoneE164 }) {
           </button>
         </div>
 
-        <nav className={styles.mobileNav} aria-label="Мобильная навигация по бару">
-          <a href="#menu" onClick={closeMenu}>
-            Меню
-          </a>
-          <a href="#events" onClick={closeMenu}>
-            События
-          </a>
-          <a href="#gallery" onClick={closeMenu}>
-            Галерея
-          </a>
-          <a href="#contacts" onClick={closeMenu}>
-            Контакты
-          </a>
-        </nav>
+        <div className={styles.mobileBody}>
+          <nav className={styles.mobileNav} aria-label="Мобильная навигация по бару">
+            {navItems.map((item, index) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={closeMenu}
+                className={styles.mobileNavItem}
+              >
+                <span className={styles.mobileNavIndex}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className={styles.mobileNavLabel}>{item.label}</span>
+              </a>
+            ))}
+          </nav>
 
-        <a className={styles.mobilePhone} href={`tel:${phoneE164}`} onClick={closeMenu}>
-          {phoneDisplay}
-        </a>
+          <a className={styles.mobilePhone} href={`tel:${phoneE164}`} onClick={closeMenu}>
+            <span className={styles.mobilePhoneLabel}>Бронь и контакт</span>
+            <span className={styles.mobilePhoneValue}>{phoneDisplay}</span>
+          </a>
+        </div>
       </aside>
     </>
   );

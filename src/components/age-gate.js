@@ -1,10 +1,38 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import styles from "./age-gate.module.css";
 import { AGE_GATE_SESSION_KEY, LEGAL_AGE } from "@/lib/age-gate";
 
 const EXIT_DURATION_MS = 520;
+
+function subscribeToAgeGateApproval(callback) {
+  if (typeof window === "undefined") {
+    return () => {};
+  }
+
+  const handleStorage = (event) => {
+    if (event.key === null || event.key === AGE_GATE_SESSION_KEY) {
+      callback();
+    }
+  };
+
+  window.addEventListener("storage", handleStorage);
+  window.addEventListener("age-gate-change", callback);
+
+  return () => {
+    window.removeEventListener("storage", handleStorage);
+    window.removeEventListener("age-gate-change", callback);
+  };
+}
+
+function getAgeGateApprovalSnapshot() {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  return window.sessionStorage.getItem(AGE_GATE_SESSION_KEY) === "verified";
+}
 
 function blockScroll(shouldBlock) {
   if (typeof document === "undefined") {
@@ -26,23 +54,15 @@ function blockScroll(shouldBlock) {
 }
 
 export function AgeGate() {
-  const [status, setStatus] = useState("checking");
+  const isSessionApproved = useSyncExternalStore(
+    subscribeToAgeGateApproval,
+    getAgeGateApprovalSnapshot,
+    () => false
+  );
+  const [isClosing, setIsClosing] = useState(false);
+  const dialogRef = useRef(null);
   const exitTimeoutRef = useRef(null);
-
-  useEffect(() => {
-    const isSessionApproved = window.sessionStorage.getItem(AGE_GATE_SESSION_KEY);
-
-    if (isSessionApproved === "verified") {
-      document.documentElement.dataset.ageGate = "approved";
-      setStatus("approved");
-      return undefined;
-    }
-
-    delete document.documentElement.dataset.ageGate;
-    setStatus("gate");
-
-    return undefined;
-  }, []);
+  const isVisible = isClosing || !isSessionApproved;
 
   useEffect(() => {
     return () => {
@@ -52,23 +72,56 @@ export function AgeGate() {
     };
   }, []);
 
-  useEffect(() => blockScroll(status !== "approved"), [status]);
+  useEffect(() => {
+    const dialog = dialogRef.current;
 
-  if (status === "approved") {
+    if (!dialog) {
+      return undefined;
+    }
+
+    if (!isVisible) {
+      if (dialog.open) {
+        dialog.close();
+      }
+
+      return undefined;
+    }
+
+    if (!dialog.open) {
+      dialog.showModal();
+      dialog.focus();
+    }
+
+    return undefined;
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (isVisible) {
+      delete document.documentElement.dataset.ageGate;
+      return undefined;
+    }
+
+    document.documentElement.dataset.ageGate = "approved";
+    return undefined;
+  }, [isVisible]);
+
+  useEffect(() => blockScroll(isVisible), [isVisible]);
+
+  if (!isVisible) {
     return null;
   }
 
   function handleConfirm() {
-    if (status === "closing") {
+    if (isClosing) {
       return;
     }
 
+    setIsClosing(true);
     window.sessionStorage.setItem(AGE_GATE_SESSION_KEY, "verified");
-    setStatus("closing");
+    window.dispatchEvent(new Event("age-gate-change"));
 
     exitTimeoutRef.current = window.setTimeout(() => {
-      document.documentElement.dataset.ageGate = "approved";
-      setStatus("approved");
+      setIsClosing(false);
     }, EXIT_DURATION_MS);
   }
 
@@ -82,23 +135,24 @@ export function AgeGate() {
   }
 
   return (
-    <div
+    <dialog
+      ref={dialogRef}
       className={`${styles.overlay} ${
-        status === "closing" ? styles.overlayClosing : ""
+        isClosing ? styles.overlayClosing : ""
       }`}
+      tabIndex={-1}
       data-age-gate-overlay="true"
-      role="dialog"
-      aria-modal="true"
       aria-labelledby="age-gate-title"
+      aria-describedby="age-gate-description"
+      onCancel={(event) => event.preventDefault()}
     >
       <div className={styles.backdrop} />
       <section className={styles.panel}>
-        <p className={styles.kicker}>18+</p>
         <div className={styles.brand}>ЩУКА</div>
         <h1 id="age-gate-title" className={styles.title}>
           Добро пожаловать
         </h1>
-        <p className={styles.description}>
+        <p id="age-gate-description" className={styles.description}>
           Сайт содержит информацию об алкогольной продукции и предназначен
           только для лиц старше {LEGAL_AGE} лет.
         </p>
@@ -119,9 +173,7 @@ export function AgeGate() {
             Мне нет 18
           </button>
         </div>
-
-        <p className={styles.footer}>Пожалуйста, употребляйте ответственно.</p>
       </section>
-    </div>
+    </dialog>
   );
 }

@@ -1,8 +1,6 @@
 .footer {
   border-top: 1px solid var(--color-border);
-  background:
-    radial-gradient(circle at top left, var(--gold-a18), transparent 30%),
-    rgba(16, 11, 9, 0.92);
+  background: rgba(16, 11, 9, 0.92);
 }
 
 .inner {
@@ -32,9 +30,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(135deg, var(--white-a1), transparent 28%),
-    radial-gradient(circle at top, var(--white-a06), transparent 48%);
+  background: linear-gradient(135deg, var(--white-a1), transparent 28%);
   pointer-events: none;
 }
 

@@ -45,23 +45,19 @@
   inset: 0;
   background:
     linear-gradient(180deg, var(--ink-a18), var(--ink-a82)),
-    radial-gradient(circle at top right, var(--gold-a32), transparent 32%),
     linear-gradient(90deg, var(--ink-a74), var(--ink-a24) 48%, var(--ink-a74));
 }
 
 .showcase .scrim {
   background:
     linear-gradient(180deg, rgba(7, 6, 5, 0.16), var(--ink-a68)),
-    radial-gradient(circle at top right, var(--gold-a24), transparent 32%),
-    radial-gradient(circle at center, var(--cream-a06), transparent 42%),
     linear-gradient(90deg, var(--ink-a56), var(--ink-a08) 46%, var(--ink-a56));
 }
 
 .immersive .scrim {
   background:
     linear-gradient(90deg, rgba(9, 7, 7, 0.76), rgba(9, 7, 7, 0.34) 34%, rgba(9, 7, 7, 0.16) 58%, rgba(9, 7, 7, 0.52)),
-    linear-gradient(180deg, rgba(7, 6, 5, 0.28), rgba(7, 6, 5, 0.56)),
-    radial-gradient(circle at bottom right, rgba(212, 106, 53, 0.18), transparent 34%);
+    linear-gradient(180deg, rgba(7, 6, 5, 0.28), rgba(7, 6, 5, 0.56));
 }
 
 .content {
@@ -99,22 +95,19 @@
   .scrim {
     background:
       linear-gradient(180deg, var(--ink-a26), var(--ink-a88)),
-      radial-gradient(circle at top right, var(--gold-a22), transparent 36%),
       linear-gradient(180deg, var(--ink-a18), rgba(12, 9, 8, 0.54) 44%, var(--ink-a9) 100%);
   }
 
   .showcase .scrim {
     background:
       linear-gradient(180deg, rgba(7, 6, 5, 0.16), rgba(7, 6, 5, 0.56) 34%, rgba(7, 6, 5, 0.86) 100%),
-      radial-gradient(circle at top center, var(--gold-a16), transparent 38%),
       linear-gradient(90deg, rgba(12, 9, 8, 0.62), var(--ink-a14) 42%, rgba(12, 9, 8, 0.62));
   }
 
   .immersive .scrim {
     background:
       linear-gradient(180deg, rgba(7, 6, 5, 0.3), rgba(7, 6, 5, 0.68) 100%),
-      linear-gradient(90deg, rgba(12, 9, 8, 0.82), rgba(12, 9, 8, 0.22) 54%, rgba(12, 9, 8, 0.58)),
-      radial-gradient(circle at bottom center, rgba(212, 106, 53, 0.14), transparent 42%);
+      linear-gradient(90deg, rgba(12, 9, 8, 0.82), rgba(12, 9, 8, 0.22) 54%, rgba(12, 9, 8, 0.58));
   }
 }
 
