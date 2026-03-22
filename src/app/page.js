@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { HeroMedia } from "@/components/hero-media";
 import { JsonLd } from "@/components/json-ld";
+import { NetworkPointsSection } from "@/components/network-points";
 import { SiteFooter } from "@/components/site-footer";
 import { getSiteData } from "@/lib/content/get-site-data";
 import { siteUrl } from "@/lib/site-url";
@@ -72,50 +72,14 @@ export default async function HomePage() {
         <section id="bars" className={styles.section}>
           <div className={styles.sectionHeading}>
             <p className={styles.sectionKicker}>Точки сети</p>
-            <h2>Выберите нужную точку и переходите сразу к её странице</h2>
+            <h2>Сначала выберите свою локацию, затем переходите внутрь бара</h2>
             <p>
-              Каталог локаций вынесен в отдельную секцию, чтобы главный экран
-              оставался простым, а список баров можно было спокойно расширять
-              без перегрузки интерфейса.
+              Блок работает как понятный навигатор по сети: пользователь сразу
+              видит все доступные бары и понимает, что именно у него есть на
+              выбор.
             </p>
           </div>
-
-          <div className={styles.cardGrid}>
-            {bars.map((bar, index) => (
-              <article key={bar.slug} className={styles.barCard}>
-                <div className={styles.cardMedia}>
-                  <Image
-                    src={bar.hero.imageUrl}
-                    alt={bar.shortLabel}
-                    fill
-                    sizes="(max-width: 900px) 100vw, 50vw"
-                    className={styles.cardImage}
-                  />
-                  <div className={styles.cardMediaScrim} />
-                  <p className={styles.cardMediaLabel}>{bar.locationLabel}</p>
-                </div>
-                <div className={styles.cardBody}>
-                  <div className={styles.cardTopline}>
-                    <p className={styles.cardEyebrow}>{bar.name}</p>
-                    <span className={styles.cardNumber}>
-                      0{index + 1}
-                    </span>
-                  </div>
-                  <h3>{bar.shortLabel}</h3>
-                  <p className={styles.cardAddress}>{bar.addressLine}</p>
-                  <p className={styles.cardSummary}>{bar.summary}</p>
-                  <ul className={styles.cardTags}>
-                    <li>Свои события</li>
-                    <li>Локальное меню</li>
-                    <li>Отдельная страница</li>
-                  </ul>
-                  <Link href={`/bars/${bar.slug}`} className={styles.cardLink}>
-                    Открыть страницу бара
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
+          <NetworkPointsSection bars={bars} />
         </section>
 
         <section className={styles.section}>
