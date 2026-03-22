@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { HeroMedia } from "@/components/hero-media";
 import { JsonLd } from "@/components/json-ld";
 import { BarHeroNav } from "@/components/bar-hero-nav";
+import { BarGallery } from "@/components/bar-gallery";
 import { SiteFooter } from "@/components/site-footer";
 import { getBarBySlug, getBars, getSiteData } from "@/lib/content/get-site-data";
 import { siteUrl } from "@/lib/site-url";
@@ -116,57 +117,10 @@ export default async function BarPage({ params }) {
 
       <main className={styles.main}>
         <section className={styles.section}>
-          <div className={styles.overviewCard}>
-            <div>
-              <p className={styles.sectionKicker}>О точке</p>
-              <h2>{bar.shortLabel}</h2>
-              <p>{bar.summary}</p>
-            </div>
-
-            <ul className={styles.factsList}>
-              <li>
-                <span>Адрес</span>
-                <strong>{bar.addressLine}</strong>
-              </li>
-              <li>
-                <span>Телефон</span>
-                <strong>{bar.phoneDisplay}</strong>
-              </li>
-              <li>
-                <span>График</span>
-                <strong>{bar.hours.join(" / ")}</strong>
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <div className={styles.identityCard}>
-            <div className={styles.sectionHeading}>
-              <p className={styles.sectionKicker}>Почему идти сюда</p>
-              <h2>Локальная подача у точки уже выражена отдельно</h2>
-              <p>
-                Это важный переход от старого single-bar сценария: теперь у
-                каждой страницы есть своя интонация, свои преимущества и свой
-                визуальный ритм.
-              </p>
-            </div>
-            <div className={styles.identityGrid}>
-              {bar.features.map((feature) => (
-                <article key={feature} className={styles.identityItem}>
-                  <span>Локально</span>
-                  <strong>{feature}</strong>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.section}>
           <div className={styles.bestForCard}>
             <div className={styles.sectionHeading}>
-              <p className={styles.sectionKicker}>Сценарии</p>
-              <h2>Для чего подходит именно эта точка</h2>
+              <p className={styles.sectionKicker}>Что Здесь Есть</p>
+              <h2>Еда, пиво и трансляции без лишних описаний</h2>
             </div>
             <ul className={styles.bestForList}>
               {bar.bestFor.map((item) => (
@@ -231,20 +185,7 @@ export default async function BarPage({ params }) {
             <p className={styles.sectionKicker}>Галерея</p>
             <h2>Визуальная атмосфера бара</h2>
           </div>
-          <div className={styles.galleryGrid}>
-            {bar.gallery.map((image, index) => (
-              <figure key={image.src} className={styles.galleryItem}>
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                  className={styles.galleryImage}
-                  priority={index < 2}
-                />
-              </figure>
-            ))}
-          </div>
+          <BarGallery images={bar.gallery} />
         </section>
 
         <section
