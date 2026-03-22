@@ -1,0 +1,192 @@
+:root {
+  /* Base palette */
+  --base-900: #0d0908;
+  --base-850: #120d0b;
+  --base-800: #1a120f;
+  --base-760: #1b1411;
+  --base-ink: #170f0c;
+  --base-paper: #f4ece1;
+  --base-paper-strong: #fff8ef;
+  --base-paper-warm: #fff4df;
+  --base-paper-soft: #fff2dc;
+  --base-paper-cream: #fff1da;
+  --orange-500: #f07a2c;
+  --orange-450: #ff8b3d;
+  --orange-400: #ffa45a;
+  --orange-350: #ffbc7f;
+  --green-300: #9fc89a;
+  --amber-300: #efcf8d;
+  --red-300: #f0a7a0;
+
+  /* Alpha tokens */
+  --white-a02: rgba(255, 255, 255, 0.02);
+  --white-a025: rgba(255, 255, 255, 0.025);
+  --white-a03: rgba(255, 255, 255, 0.03);
+  --white-a04: rgba(255, 255, 255, 0.04);
+  --white-a05: rgba(255, 255, 255, 0.05);
+  --white-a06: rgba(255, 255, 255, 0.06);
+  --white-a07: rgba(255, 255, 255, 0.07);
+  --white-a08: rgba(255, 255, 255, 0.08);
+  --white-a1: rgba(255, 255, 255, 0.1);
+  --white-a12: rgba(255, 255, 255, 0.12);
+  --white-a14: rgba(255, 255, 255, 0.14);
+  --white-a16: rgba(255, 255, 255, 0.16);
+  --white-a18: rgba(255, 255, 255, 0.18);
+  --white-a24: rgba(255, 255, 255, 0.24);
+  --white-a34: rgba(255, 255, 255, 0.34);
+
+  --paper-border-a1: rgba(255, 244, 230, 0.1);
+  --paper-border-a12: rgba(255, 244, 230, 0.12);
+  --paper-border-a14: rgba(255, 244, 230, 0.14);
+  --paper-border-a16: rgba(255, 244, 230, 0.16);
+  --paper-border-a18: rgba(255, 244, 230, 0.18);
+  --paper-border-a24: rgba(255, 244, 230, 0.24);
+  --paper-border-a34: rgba(255, 244, 230, 0.34);
+  --paper-border-a42: rgba(255, 244, 230, 0.42);
+
+  --ink-a08: rgba(18, 12, 10, 0.08);
+  --ink-a12: rgba(18, 12, 10, 0.12);
+  --ink-a14: rgba(18, 12, 10, 0.14);
+  --ink-a18: rgba(18, 12, 10, 0.18);
+  --ink-a2: rgba(18, 12, 10, 0.2);
+  --ink-a24: rgba(18, 12, 10, 0.24);
+  --ink-a26: rgba(18, 12, 10, 0.26);
+  --ink-a3: rgba(18, 12, 10, 0.3);
+  --ink-a32: rgba(18, 12, 10, 0.32);
+  --ink-a34: rgba(18, 12, 10, 0.34);
+  --ink-a42: rgba(18, 12, 10, 0.42);
+  --ink-a5: rgba(14, 11, 10, 0.5);
+  --ink-a52: rgba(0, 0, 0, 0.52);
+  --ink-a54: rgba(12, 9, 8, 0.54);
+  --ink-a56: rgba(12, 9, 8, 0.56);
+  --ink-a58: rgba(6, 5, 4, 0.58);
+  --ink-a62: rgba(12, 9, 8, 0.62);
+  --ink-a68: rgba(7, 6, 5, 0.68);
+  --ink-a7: rgba(6, 5, 5, 0.7);
+  --ink-a74: rgba(12, 9, 8, 0.74);
+  --ink-a82: rgba(18, 12, 10, 0.82);
+  --ink-a88: rgba(10, 8, 7, 0.88);
+  --ink-a9: rgba(12, 9, 8, 0.9);
+  --ink-a92: rgba(10, 8, 7, 0.92);
+  --ink-a94: rgba(19, 14, 12, 0.94);
+  --ink-a96: rgba(12, 9, 8, 0.96);
+
+  --shadow-dark-a2: rgba(0, 0, 0, 0.2);
+  --shadow-dark-a22: rgba(0, 0, 0, 0.22);
+  --shadow-dark-a24: rgba(0, 0, 0, 0.24);
+  --shadow-dark-a28: rgba(0, 0, 0, 0.28);
+  --shadow-dark-a3: rgba(0, 0, 0, 0.3);
+  --shadow-dark-a34: rgba(0, 0, 0, 0.34);
+  --shadow-dark-a42: rgba(0, 0, 0, 0.42);
+
+  --gold-a08: rgba(240, 122, 44, 0.08);
+  --gold-a1: rgba(240, 122, 44, 0.1);
+  --gold-a14: rgba(240, 122, 44, 0.14);
+  --gold-a16: rgba(240, 122, 44, 0.16);
+  --gold-a18: rgba(240, 122, 44, 0.18);
+  --gold-a22: rgba(240, 122, 44, 0.22);
+  --gold-a24: rgba(240, 122, 44, 0.24);
+  --gold-a32: rgba(240, 122, 44, 0.32);
+  --cream-a06: rgba(255, 214, 161, 0.06);
+
+  /* Text */
+  --color-text: var(--base-paper);
+  --color-text-strong: var(--base-paper-strong);
+  --color-text-muted: rgba(244, 236, 225, 0.72);
+  --color-heading: var(--base-paper-strong);
+  --color-kicker: var(--orange-500);
+
+  /* Brand actions */
+  --color-primary: var(--orange-500);
+  --color-primary-hover: var(--orange-450);
+  --color-primary-strong: var(--orange-400);
+  --color-primary-bright: var(--orange-350);
+  --color-primary-ink: var(--base-ink);
+  --color-secondary: var(--white-a06);
+  --color-secondary-hover: var(--white-a12);
+  --color-secondary-strong: var(--white-a16);
+
+  /* Semantic aliases */
+  --color-accent: var(--color-primary);
+  --color-accent-strong: var(--color-primary-hover);
+  --color-success: var(--green-300);
+  --color-warning: var(--amber-300);
+  --color-danger: var(--red-300);
+
+  /* Surfaces */
+  --color-background: var(--base-850);
+  --color-background-soft: var(--base-760);
+  --color-surface: rgba(34, 24, 20, 0.76);
+  --color-surface-strong: rgba(18, 12, 10, 0.9);
+  --color-surface-elevated: var(--ink-a34);
+  --color-surface-overlay: var(--ink-a24);
+  --color-border: rgba(237, 226, 207, 0.12);
+  --color-border-strong: rgba(237, 226, 207, 0.22);
+
+  /* Glass */
+  --glass-surface: var(--white-a07);
+  --glass-surface-strong: rgba(255, 255, 255, 0.11);
+  --glass-dark: var(--ink-a26);
+  --glass-border: rgba(255, 244, 230, 0.14);
+  --glass-highlight: rgba(255, 250, 241, 0.16);
+  --glass-highlight-soft: var(--white-a08);
+  --glass-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+
+  /* Global background treatment */
+  --bg-gradient-top-glow: rgba(209, 161, 90, 0.12);
+  --bg-gradient-image-glow: rgba(255, 232, 196, 0.08);
+  --bg-overlay-top: rgba(11, 9, 8, 0.48);
+  --bg-overlay-bottom: rgba(11, 9, 8, 0.68);
+  --bg-overlay-side: rgba(10, 8, 7, 0.38);
+  --bg-overlay-side-soft: rgba(10, 8, 7, 0.08);
+  --bg-overlay-center-glow: rgba(209, 161, 90, 0.08);
+  --footer-bg: rgba(16, 11, 9, 0.92);
+  --overlay-scrim-soft: rgba(6, 5, 4, 0.42);
+
+  /* Selection */
+  --color-selection: rgba(209, 161, 90, 0.36);
+
+  /* Shadows */
+  --shadow-soft: 0 24px 70px var(--shadow-dark-a28);
+  --shadow-panel-hero: inset 0 1px 0 var(--white-a1), 0 34px 80px var(--shadow-dark-a22);
+  --shadow-panel-bar: inset 0 1px 0 var(--white-a1), 0 24px 64px var(--shadow-dark-a22);
+  --shadow-card-glass: inset 0 1px 0 var(--white-a08), var(--glass-shadow);
+  --shadow-primary: 0 14px 34px rgba(240, 122, 44, 0.2);
+  --shadow-primary-strong: 0 14px 34px rgba(240, 122, 44, 0.24);
+  --shadow-primary-hover: 0 16px 36px rgba(240, 122, 44, 0.28);
+  --shadow-primary-hover-strong: 0 16px 36px rgba(240, 122, 44, 0.32);
+  --shadow-scrim-deep: 0 38px 90px var(--shadow-dark-a42);
+  --shadow-scrim-soft: 0 18px 42px var(--shadow-dark-a2);
+  --shadow-floating: inset 0 1px 0 var(--white-a08), 0 18px 34px var(--shadow-dark-a24);
+  --shadow-side-panel: inset 0 1px 0 var(--white-a08), -18px 0 48px var(--shadow-dark-a34);
+
+  /* Buttons */
+  --button-primary-border: var(--color-primary);
+  --button-primary-text: var(--base-paper-strong);
+  --button-primary-bg: transparent;
+  --button-primary-bg-hover: var(--color-primary);
+  --button-primary-text-hover: var(--color-primary-ink);
+  --button-primary-inset: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  --button-primary-inset-hover: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-medium: 260ms;
+  --duration-slow: 520ms;
+  --transition-colors:
+    color var(--duration-medium) var(--ease-standard),
+    background-color var(--duration-medium) var(--ease-standard),
+    border-color var(--duration-medium) var(--ease-standard),
+    box-shadow var(--duration-medium) var(--ease-standard),
+    opacity var(--duration-medium) var(--ease-standard),
+    filter var(--duration-medium) var(--ease-standard);
+  --transition-glass:
+    color var(--duration-medium) var(--ease-standard),
+    background-color var(--duration-medium) var(--ease-standard),
+    border-color var(--duration-medium) var(--ease-standard),
+    box-shadow var(--duration-medium) var(--ease-standard),
+    backdrop-filter var(--duration-medium) var(--ease-standard),
+    opacity var(--duration-medium) var(--ease-standard),
+    filter var(--duration-medium) var(--ease-standard);
+}

@@ -16,16 +16,15 @@
   justify-content: center;
   min-height: 42px;
   padding: 0 14px;
-  border: 1px solid rgba(255, 244, 230, 0.16);
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background:
+    linear-gradient(180deg, var(--white-a08), var(--white-a03)),
+    var(--ink-a18);
   color: var(--color-text-muted);
-  backdrop-filter: blur(12px);
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease,
-    color 180ms ease;
+  backdrop-filter: blur(14px) saturate(118%);
+  box-shadow: inset 0 1px 0 var(--white-a08);
+  transition: var(--transition-glass);
 }
 
 .backLink,
@@ -51,15 +50,19 @@
 
 .menuToggle,
 .closeButton {
-  border: 1px solid rgba(255, 244, 230, 0.16);
-  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid transparent;
+  background:
+    linear-gradient(180deg, var(--white-a08), var(--white-a03)),
+    var(--ink-a18);
   color: var(--color-text);
+  backdrop-filter: blur(14px) saturate(118%);
+  box-shadow: inset 0 1px 0 var(--white-a08);
 }
 
 .menuToggle {
   width: 42px;
   height: 42px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -80,7 +83,7 @@
   background: rgba(6, 5, 4, 0.42);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 180ms ease;
+  transition: opacity var(--duration-medium) var(--ease-standard);
   z-index: 40;
 }
 
@@ -101,12 +104,20 @@
   align-content: start;
   gap: 18px;
   background:
-    linear-gradient(180deg, rgba(18, 12, 10, 0.96), rgba(12, 9, 8, 0.96)),
-    rgba(12, 9, 8, 0.96);
-  border-left: 1px solid rgba(255, 244, 230, 0.1);
+    linear-gradient(180deg, var(--white-a08), var(--white-a02)),
+    linear-gradient(180deg, var(--ink-a88), var(--ink-a92));
+  border-left: 1px solid var(--glass-border);
+  border-top-left-radius: var(--radius-panel);
+  border-bottom-left-radius: var(--radius-panel);
   transform: translateX(100%);
-  transition: transform 220ms ease;
-  box-shadow: -18px 0 48px rgba(0, 0, 0, 0.34);
+  transition:
+    transform var(--duration-medium) var(--ease-standard),
+    border-color var(--duration-medium) var(--ease-standard),
+    background-color var(--duration-medium) var(--ease-standard),
+    box-shadow var(--duration-medium) var(--ease-standard),
+    backdrop-filter var(--duration-medium) var(--ease-standard);
+  backdrop-filter: blur(18px) saturate(118%);
+  box-shadow: var(--shadow-side-panel);
 }
 
 .mobilePanelOpen {
@@ -130,7 +141,7 @@
 .closeButton {
   width: 42px;
   height: 42px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font-size: 1.5rem;
   line-height: 1;
 }
@@ -144,9 +155,13 @@
 .mobilePhone {
   min-height: 48px;
   padding: 0 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 244, 230, 0.12);
-  background: rgba(255, 255, 255, 0.03);
+  border-radius: 18px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(180deg, var(--white-a08), var(--white-a03)),
+    var(--white-a04);
+  backdrop-filter: blur(14px) saturate(118%);
+  box-shadow: inset 0 1px 0 var(--white-a08);
 }
 
 .mobilePhone {
@@ -157,6 +172,10 @@
   .mobilePanel {
     width: 100%;
     max-width: none;
+    padding:
+      max(18px, env(safe-area-inset-top))
+      18px
+      max(24px, env(safe-area-inset-bottom));
     border-left: 0;
   }
 }
@@ -169,9 +188,11 @@
   .mobileNav a:hover,
   .menuToggle:hover,
   .closeButton:hover {
-    transform: translateY(-2px);
-    border-color: rgba(255, 244, 230, 0.24);
-    color: var(--color-text);
+    background:
+      linear-gradient(180deg, var(--white-a12), var(--white-a04)),
+      var(--ink-a2);
+    color: var(--color-text-strong);
+    box-shadow: inset 0 1px 0 var(--white-a14);
   }
 }
 
@@ -182,6 +203,43 @@
 
   .mobileRow {
     display: flex;
+    gap: 10px;
+  }
+
+  .backLink,
+  .mobilePhone {
+    min-height: 46px;
+  }
+
+  .backLink {
+    padding: 0 16px;
+  }
+
+  .menuToggle,
+  .closeButton {
+    width: 46px;
+    height: 46px;
+  }
+
+  .mobileOverlay {
+    background: rgba(6, 5, 4, 0.58);
+  }
+
+  .mobilePanel {
+    width: min(360px, 92vw);
+    padding:
+      max(18px, env(safe-area-inset-top))
+      18px
+      max(24px, env(safe-area-inset-bottom));
+    gap: 16px;
+  }
+
+  .mobileNav a,
+  .mobilePhone {
+    min-height: 54px;
+    padding: 0 18px;
+    border-radius: 16px;
+    font-size: 1rem;
   }
 }
 

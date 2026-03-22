@@ -1,0 +1,204 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: 1;
+  transition: opacity var(--duration-slow) var(--ease-standard);
+}
+
+:global(html[data-age-gate="approved"]) .overlay {
+  display: none;
+}
+
+.overlayClosing {
+  opacity: 0;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, var(--gold-a18), transparent 30%),
+    linear-gradient(180deg, rgba(6, 5, 5, 0.7), var(--ink-a92));
+  backdrop-filter: blur(18px);
+  transition:
+    opacity var(--duration-slow) var(--ease-standard),
+    backdrop-filter var(--duration-slow) var(--ease-standard);
+}
+
+.overlayClosing .backdrop {
+  opacity: 0;
+  backdrop-filter: blur(0);
+}
+
+.panel {
+  position: relative;
+  width: min(100%, 38rem);
+  padding: 34px 32px 30px;
+  border: 1px solid var(--paper-border-a14);
+  border-radius: calc(var(--radius-panel) + 2px);
+  background:
+    linear-gradient(180deg, var(--ink-a94), var(--ink-a96)),
+    radial-gradient(circle at top left, var(--gold-a08), transparent 36%);
+  box-shadow: var(--shadow-scrim-deep);
+  text-align: center;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity var(--duration-slow) var(--ease-standard),
+    transform var(--duration-slow) var(--ease-standard),
+    box-shadow var(--duration-slow) var(--ease-standard),
+    border-color var(--duration-slow) var(--ease-standard),
+    background-color var(--duration-slow) var(--ease-standard);
+}
+
+.overlayClosing .panel {
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  box-shadow: var(--shadow-scrim-soft);
+}
+
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 18px 18px auto auto;
+  width: 84px;
+  height: 84px;
+  border-top: 1px solid var(--paper-border-a12);
+  border-right: 1px solid var(--paper-border-a12);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.kicker {
+  color: var(--color-accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.brand {
+  margin-top: 18px;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  letter-spacing: 0.18em;
+}
+
+.title {
+  margin-top: 28px;
+  font-family: var(--font-display), serif;
+  font-size: clamp(3.8rem, 9vw, 5.8rem);
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+.description {
+  margin-top: 16px;
+  max-width: 34rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--base-paper-cream);
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+
+.footer {
+  margin-top: 22px;
+  color: var(--color-text-muted);
+  line-height: 1.58;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  min-height: 54px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  transition: var(--transition-colors);
+  cursor: pointer;
+}
+
+.primaryAction {
+  border-color: var(--button-primary-border);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  box-shadow: var(--button-primary-inset);
+}
+
+.secondaryAction {
+  background: var(--color-secondary);
+  color: var(--color-text);
+  box-shadow: inset 0 1px 0 var(--white-a08);
+}
+
+.footer {
+  padding-top: 18px;
+  border-top: 1px solid var(--paper-border-a1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primaryAction:hover {
+    background: var(--button-primary-bg-hover);
+    color: var(--button-primary-text-hover);
+    border-color: var(--button-primary-border);
+    box-shadow:
+      var(--button-primary-inset-hover),
+      var(--shadow-primary-hover);
+    filter: saturate(1.03);
+  }
+
+  .secondaryAction:hover {
+    background: var(--color-secondary-hover);
+    color: var(--color-text-strong);
+    box-shadow: inset 0 1px 0 var(--white-a14);
+  }
+}
+
+@media (max-width: 640px) {
+  .overlay {
+    padding: 14px;
+  }
+
+  .panel {
+    padding: 24px 18px 22px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: clamp(3rem, 15vw, 4rem);
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .backdrop,
+  .panel,
+  .primaryAction,
+  .secondaryAction {
+    transition: none;
+  }
+}

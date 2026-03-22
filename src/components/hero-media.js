@@ -46,7 +46,7 @@ export function HeroMedia({
   const fallbackImageUrl = media.posterUrl || media.imageUrl;
 
   return (
-    <section className={heroClassName}>
+    <section className={heroClassName} data-hero-section="true">
       <div className={styles.mediaLayer}>
         {showVideo ? (
           <video

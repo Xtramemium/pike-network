@@ -1,14 +1,10 @@
+@import "./theme.css";
+
 :root {
-  --color-background: #120d0b;
-  --color-background-soft: #1b1411;
-  --color-surface: rgba(34, 24, 20, 0.76);
-  --color-surface-strong: rgba(18, 12, 10, 0.9);
-  --color-border: rgba(237, 226, 207, 0.12);
-  --color-text: #f4ece1;
-  --color-text-muted: rgba(244, 236, 225, 0.72);
-  --color-accent: #d1a15a;
-  --color-accent-strong: #e0b36d;
-  --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.28);
+  --radius-panel: 32px;
+  --radius-card: 28px;
+  --radius-tile: 22px;
+  --radius-pill: 999px;
 }
 
 * {
@@ -22,14 +18,52 @@ html {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   min-height: 100vh;
   color: var(--color-text);
   background:
-    radial-gradient(circle at top, rgba(209, 161, 90, 0.12), transparent 30%),
-    linear-gradient(180deg, #1a120f 0%, #120d0b 36%, #0d0908 100%);
+    radial-gradient(circle at top, var(--bg-gradient-top-glow), transparent 30%),
+    linear-gradient(
+      180deg,
+      var(--base-800) 0%,
+      var(--color-background) 36%,
+      var(--base-900) 100%
+    );
   font-family: var(--font-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at top, var(--bg-gradient-image-glow), transparent 28%),
+    url("/mock/bars/shchuka-8-marta-18k1/gallery/05.jpg") center / cover no-repeat;
+  opacity: 0.24;
+  transform: scale(1.05);
+  filter: saturate(0.9) contrast(1.04) brightness(0.82);
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, var(--bg-overlay-top), var(--bg-overlay-bottom)),
+    radial-gradient(circle at center, var(--bg-overlay-center-glow), transparent 48%),
+    linear-gradient(
+      90deg,
+      var(--bg-overlay-side),
+      var(--bg-overlay-side-soft) 48%,
+      var(--bg-overlay-side)
+    );
+  pointer-events: none;
 }
 
 main {
@@ -54,5 +88,5 @@ img {
 }
 
 ::selection {
-  background: rgba(209, 161, 90, 0.36);
+  background: var(--color-selection);
 }

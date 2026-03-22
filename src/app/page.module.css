@@ -25,12 +25,15 @@
   max-width: 51rem;
   margin: 0 auto;
   padding: 24px 26px 30px;
-  border: 1px solid rgba(255, 244, 230, 0.12);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-panel);
   background:
-    linear-gradient(180deg, rgba(14, 11, 10, 0.18), rgba(14, 11, 10, 0.38)),
-    radial-gradient(circle at top left, rgba(209, 161, 90, 0.06), transparent 32%);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 34px 80px rgba(0, 0, 0, 0.26);
+    linear-gradient(180deg, var(--white-a07), var(--white-a02)),
+    linear-gradient(180deg, var(--ink-a14), var(--ink-a3)),
+    radial-gradient(circle at top left, var(--gold-a1), transparent 32%);
+  backdrop-filter: blur(16px) saturate(118%);
+  box-shadow: var(--shadow-panel-hero);
   animation: fade-up 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -40,9 +43,19 @@
   inset: 18px 18px auto auto;
   width: 84px;
   height: 84px;
-  border-top: 1px solid rgba(255, 244, 230, 0.12);
-  border-right: 1px solid rgba(255, 244, 230, 0.12);
+  border-top: 1px solid var(--paper-border-a12);
+  border-right: 1px solid var(--paper-border-a12);
   opacity: 0.7;
+  pointer-events: none;
+}
+
+.heroCopy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, var(--white-a12), transparent 26%),
+    radial-gradient(circle at top center, var(--white-a08), transparent 42%);
   pointer-events: none;
 }
 
@@ -56,7 +69,7 @@
 .logo {
   object-fit: contain;
   opacity: 0.96;
-  filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.24));
+  filter: drop-shadow(0 16px 30px var(--shadow-dark-a24));
 }
 
 .heroCopy h1,
@@ -80,7 +93,7 @@
   max-width: 22ch;
   margin-top: 18px;
   font-size: clamp(1.22rem, 2.6vw, 2.1rem);
-  color: #fff4df;
+  color: var(--base-paper-warm);
 }
 
 .heroDescription {
@@ -109,14 +122,10 @@
   justify-content: center;
   min-height: 50px;
   padding: 0 22px;
+  border: 1px solid transparent;
   border-radius: 999px;
   font-weight: 700;
-  transition:
-    transform 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease,
-    color 180ms ease;
+  transition: var(--transition-colors);
 }
 
 .primaryAction::before,
@@ -129,24 +138,25 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.34),
+    var(--white-a34),
     transparent
   );
   transform: skewX(-24deg) translateX(-180%);
-  transition: transform 420ms ease;
+  transition: transform 420ms var(--ease-standard);
 }
 
 .primaryAction {
-  background: linear-gradient(135deg, #f0bf71, #d59a48);
-  color: #170f0c;
-  box-shadow: 0 14px 34px rgba(213, 154, 72, 0.26);
+  border-color: var(--button-primary-border);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  box-shadow: var(--button-primary-inset);
 }
 
 .secondaryAction,
 .cardLink {
-  border: 1px solid rgba(255, 244, 230, 0.24);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-secondary);
   color: var(--color-text);
+  box-shadow: inset 0 1px 0 var(--white-a08);
 }
 
 .main {
@@ -165,7 +175,7 @@
   position: absolute;
   inset: auto 0 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 244, 230, 0.12), transparent);
+  background: linear-gradient(90deg, transparent, var(--paper-border-a12), transparent);
 }
 
 .sectionHeading {
@@ -211,37 +221,52 @@
 .ctaCard {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--glass-border);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
-    rgba(18, 12, 10, 0.44);
-  box-shadow: var(--shadow-soft);
+    linear-gradient(180deg, var(--white-a08), var(--white-a025)),
+    linear-gradient(180deg, var(--ink-a24), var(--ink-a34));
+  backdrop-filter: blur(16px) saturate(118%);
+  box-shadow: var(--shadow-card-glass);
+  border-radius: var(--radius-card);
+}
+
+.barCard::before,
+.pillarCard::before,
+.commonCard::before,
+.faqCard::before,
+.ctaCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, var(--white-a1), transparent 28%),
+    radial-gradient(circle at top, var(--white-a06), transparent 46%);
+  pointer-events: none;
 }
 
 .barCard {
-  transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease;
+  transition: var(--transition-colors);
 }
 
 .cardMedia {
   position: relative;
   aspect-ratio: 1.16;
   overflow: hidden;
+  border-top-left-radius: var(--radius-card);
+  border-top-right-radius: var(--radius-card);
 }
 
 .cardImage {
   object-fit: cover;
-  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 700ms var(--ease-standard);
 }
 
 .cardMediaScrim {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.52)),
-    radial-gradient(circle at top right, rgba(209, 161, 90, 0.14), transparent 34%);
+    linear-gradient(180deg, var(--ink-a08), rgba(0, 0, 0, 0.52)),
+    radial-gradient(circle at top right, var(--gold-a14), transparent 34%);
 }
 
 .cardMediaLabel {
@@ -254,10 +279,10 @@
   min-height: 34px;
   padding: 0 12px;
   border-radius: 999px;
-  background: rgba(12, 9, 8, 0.52);
-  border: 1px solid rgba(255, 244, 230, 0.14);
-  color: #fff6e8;
-  backdrop-filter: blur(12px);
+  background: var(--ink-a32);
+  border: 1px solid var(--paper-border-a16);
+  color: var(--base-paper-strong);
+  backdrop-filter: blur(14px) saturate(120%);
 }
 
 .cardBody {
@@ -272,7 +297,7 @@
 }
 
 .cardNumber {
-  color: rgba(255, 244, 230, 0.42);
+  color: var(--paper-border-a42);
   font-size: 0.88rem;
   letter-spacing: 0.16em;
 }
@@ -304,11 +329,12 @@
 
 .cardTags li {
   padding: 9px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 244, 230, 0.12);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--paper-border-a14);
   color: var(--color-text-muted);
   font-size: 0.9rem;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--white-a06);
+  backdrop-filter: blur(12px) saturate(115%);
 }
 
 .cardLink {
@@ -319,10 +345,7 @@
 .commonCard,
 .faqCard {
   padding: 24px;
-  transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease;
+  transition: var(--transition-colors);
 }
 
 .pillarCard h3,
@@ -358,12 +381,11 @@
   display: grid;
   gap: 12px;
   padding: 20px 22px 20px 28px;
-  border: 1px solid rgba(255, 244, 230, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    background-color 220ms ease;
+  border: 1px solid var(--paper-border-a12);
+  background: var(--white-a05);
+  backdrop-filter: blur(14px) saturate(115%);
+  border-radius: var(--radius-tile);
+  transition: var(--transition-colors);
 }
 
 .journeyItem::after {
@@ -391,9 +413,9 @@
   gap: 22px;
   padding: 30px;
   background:
-    radial-gradient(circle at top left, rgba(209, 161, 90, 0.14), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
-    rgba(18, 12, 10, 0.44);
+    radial-gradient(circle at top left, var(--gold-a16), transparent 28%),
+    linear-gradient(180deg, var(--white-a08), var(--white-a03)),
+    var(--ink-a3);
 }
 
 .ctaCard p {
@@ -403,17 +425,72 @@
 }
 
 @media (max-width: 759px) {
+  .main {
+    width: min(100%, calc(100% - 24px));
+    padding: 36px 0 68px;
+  }
+
+  .section {
+    padding: 26px 0;
+  }
+
+  .sectionHeading h2 {
+    font-size: clamp(2.25rem, 10vw, 3.2rem);
+    line-height: 0.96;
+  }
+
+  .sectionHeading p {
+    margin-top: 14px;
+  }
+
   .heroInner {
-    min-height: auto;
-    padding-top: 18px;
+    width: min(100%, calc(100% - 24px));
+    min-height: 100svh;
+    padding-top: max(20px, env(safe-area-inset-top));
+    padding-bottom: max(26px, env(safe-area-inset-bottom));
     gap: 18px;
+    align-content: center;
   }
 
   .heroCopy {
-    padding: 22px 20px 24px;
+    max-width: 100%;
+    margin: auto 0;
+    padding: 24px 18px 22px;
+    background:
+      linear-gradient(180deg, var(--ink-a26), rgba(14, 11, 10, 0.5)),
+      radial-gradient(circle at top left, var(--gold-a08), transparent 34%);
+  }
+
+  .heroCopy::after {
+    inset: 14px 14px auto auto;
+    width: 64px;
+    height: 64px;
+  }
+
+  .logoWrap {
+    width: 72px;
+    margin-bottom: 14px;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(3.45rem, 15vw, 4.9rem);
+    line-height: 0.9;
+  }
+
+  .heroSubtitle {
+    max-width: 15ch;
+    margin-top: 14px;
+    font-size: clamp(1.18rem, 5.4vw, 1.55rem);
+  }
+
+  .heroDescription {
+    margin-top: 14px;
+    font-size: 1rem;
+    line-height: 1.55;
   }
 
   .actions {
+    flex-direction: column;
     gap: 10px;
     margin-top: 24px;
   }
@@ -422,40 +499,75 @@
   .secondaryAction {
     min-height: 48px;
     padding: 0 18px;
+    width: 100%;
+  }
+
+  .cardMedia {
+    aspect-ratio: 1.04;
+  }
+
+  .cardBody,
+  .pillarCard,
+  .commonCard,
+  .faqCard {
+    padding: 20px 18px 22px;
+  }
+
+  .cardBody h3 {
+    font-size: clamp(2rem, 11vw, 2.8rem);
+  }
+
+  .cardSummary,
+  .pillarCard p,
+  .commonCard p,
+  .faqCard p {
+    margin-top: 12px;
+  }
+
+  .journeyItem {
+    padding: 18px 18px 18px 24px;
+  }
+
+  .ctaCard {
+    padding: 24px 18px;
   }
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .primaryAction:hover,
-  .secondaryAction:hover,
-  .cardLink:hover {
-    transform: translateY(-3px);
-  }
-
   .primaryAction:hover::before,
   .secondaryAction:hover::before,
   .cardLink:hover::before {
     transform: skewX(-24deg) translateX(540%);
   }
 
+  .primaryAction:hover {
+    background: var(--button-primary-bg-hover);
+    color: var(--button-primary-text-hover);
+    border-color: var(--button-primary-border);
+    box-shadow:
+      var(--button-primary-inset-hover),
+      var(--shadow-primary-hover-strong);
+    filter: saturate(1.03);
+  }
+
   .secondaryAction:hover,
   .cardLink:hover {
-    border-color: rgba(255, 244, 230, 0.34);
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--color-secondary-hover);
+    color: var(--color-text-strong);
+    box-shadow: inset 0 1px 0 var(--white-a14);
   }
 
   .pillarCard:hover,
   .commonCard:hover,
   .faqCard:hover,
   .journeyItem:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255, 244, 230, 0.18);
+    border-color: var(--paper-border-a18);
+    background-color: var(--white-a07);
   }
 
   .barCard:hover {
-    transform: translateY(-6px);
-    border-color: rgba(255, 244, 230, 0.2);
-    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.36);
+    border-color: var(--color-border-strong);
+    box-shadow: 0 34px 90px var(--shadow-dark-a3);
   }
 
   .barCard:hover .cardImage {
@@ -499,7 +611,6 @@
   .primaryAction,
   .secondaryAction,
   .cardLink,
-  .barCard,
   .pillarCard,
   .commonCard,
   .faqCard,

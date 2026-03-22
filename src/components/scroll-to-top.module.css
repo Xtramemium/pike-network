@@ -1,0 +1,70 @@
+.button {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, calc(env(safe-area-inset-bottom) + 18px));
+  z-index: 90;
+  width: 54px;
+  height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background:
+    linear-gradient(180deg, var(--white-a1), var(--white-a03)),
+    var(--ink-a24);
+  color: var(--color-text);
+  backdrop-filter: blur(18px) saturate(118%);
+  box-shadow: var(--shadow-floating);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px) scale(0.94);
+  transition:
+    opacity var(--duration-medium) var(--ease-standard),
+    transform var(--duration-medium) var(--ease-standard),
+    border-color var(--duration-medium) var(--ease-standard),
+    background-color var(--duration-medium) var(--ease-standard),
+    color var(--duration-medium) var(--ease-standard),
+    box-shadow var(--duration-medium) var(--ease-standard),
+    filter var(--duration-medium) var(--ease-standard);
+}
+
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background:
+      linear-gradient(180deg, var(--white-a14), var(--white-a04)),
+      var(--ink-a24);
+    color: var(--color-text-strong);
+    box-shadow:
+      inset 0 1px 0 var(--white-a14),
+      0 18px 34px var(--shadow-dark-a24);
+  }
+}
+
+@media (max-width: 759px) {
+  .button {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, calc(env(safe-area-inset-bottom) + 14px));
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}
