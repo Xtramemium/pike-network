@@ -35,12 +35,18 @@ export function HeroMedia({
   }, []);
 
   const variantClassName =
-    variant === "showcase" ? styles.showcase : styles.defaultVariant;
+    variant === "showcase"
+      ? styles.showcase
+      : variant === "immersive"
+        ? styles.immersive
+        : styles.defaultVariant;
   const heroClassName = [styles.hero, variantClassName, className]
     .filter(Boolean)
     .join(" ");
   const isShowcaseVideo =
-    variant === "showcase" && media.kind === "video" && media.videoUrl;
+    (variant === "showcase" || variant === "immersive") &&
+    media.kind === "video" &&
+    media.videoUrl;
   const showVideo =
     isShowcaseVideo || (media.kind === "video" && media.videoUrl && shouldUseVideo);
   const fallbackImageUrl = media.posterUrl || media.imageUrl;

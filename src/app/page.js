@@ -25,9 +25,20 @@ export default async function HomePage() {
     <div className={styles.page}>
       <JsonLd data={buildNetworkSchema(siteData)} />
 
-      <HeroMedia media={network.hero.media} priority variant="showcase">
+      <HeroMedia media={network.hero.media} priority variant="immersive">
         <div className={styles.heroInner}>
-          <div className={styles.heroCopy}>
+          <div className={styles.heroBrand}>
+            <Image
+              src={network.logoUrl}
+              alt="Р›РѕРіРѕС‚РёРї СЃРµС‚Рё Р‘Р°СЂ Р©СѓРєР°"
+              fill
+              sizes="108px"
+              className={styles.heroBrandImage}
+            />
+          </div>
+
+          <div className={styles.heroStage}>
+            <div className={styles.heroCopy}>
             <div className={styles.logoWrap}>
               <Image
                 src={network.logoUrl}
@@ -52,6 +63,7 @@ export default async function HomePage() {
                 Позвонить
               </a>
             </div>
+          </div>
           </div>
         </div>
       </HeroMedia>

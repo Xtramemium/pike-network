@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Manrope, Roboto_Condensed } from "next/font/google";
 import { AgeGate } from "@/components/age-gate";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { AGE_GATE_SESSION_KEY } from "@/lib/age-gate";
@@ -10,9 +10,9 @@ const manrope = Manrope({
   variable: "--font-sans",
 });
 
-const cormorant = Cormorant_Garamond({
+const robotoCondensed = Roboto_Condensed({
   subsets: ["latin", "cyrillic"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "700"],
   variable: "--font-display",
 });
 
@@ -43,7 +43,7 @@ const ageGateBootScript = `
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">
-      <body className={`${manrope.variable} ${cormorant.variable}`}>
+      <body className={`${manrope.variable} ${robotoCondensed.variable}`}>
         <script dangerouslySetInnerHTML={{ __html: ageGateBootScript }} />
         <AgeGate />
         <ScrollToTop />

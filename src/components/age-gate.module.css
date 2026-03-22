@@ -81,14 +81,14 @@
 
 .brand {
   margin-top: 18px;
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   letter-spacing: 0.18em;
 }
 
 .title {
   margin-top: 28px;
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(3.8rem, 9vw, 5.8rem);
   line-height: 0.9;
   text-wrap: balance;
@@ -128,7 +128,11 @@
   padding: 0 24px;
   border-radius: 999px;
   border: 1px solid transparent;
-  font-weight: 700;
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  line-height: 1;
   transition: var(--transition-colors);
   cursor: pointer;
 }
@@ -151,6 +155,43 @@
   border-top: 1px solid var(--paper-border-a1);
 }
 
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible {
+  outline: none;
+}
+
+.primaryAction:focus-visible {
+  box-shadow:
+    var(--button-primary-inset-hover),
+    var(--shadow-primary-hover),
+    var(--focus-ring),
+    var(--focus-ring-soft);
+}
+
+.secondaryAction:focus-visible {
+  color: var(--color-text-strong);
+  box-shadow:
+    inset 0 1px 0 var(--white-a14),
+    var(--focus-ring),
+    var(--focus-ring-soft);
+}
+
+.primaryAction:active,
+.secondaryAction:active {
+  transform: none;
+}
+
+.primaryAction:active {
+  background: var(--button-primary-bg-active);
+  box-shadow:
+    var(--button-primary-inset),
+    var(--shadow-primary-strong);
+}
+
+.secondaryAction:active {
+  background: var(--color-secondary-strong);
+}
+
 @media (hover: hover) and (pointer: fine) {
   .primaryAction:hover {
     background: var(--button-primary-bg-hover);
@@ -159,7 +200,6 @@
     box-shadow:
       var(--button-primary-inset-hover),
       var(--shadow-primary-hover);
-    filter: saturate(1.03);
   }
 
   .secondaryAction:hover {

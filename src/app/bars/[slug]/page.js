@@ -59,7 +59,7 @@ export default async function BarPage({ params }) {
     <div className={styles.page}>
       <JsonLd data={buildBarSchema(bar)} />
 
-      <HeroMedia media={bar.hero} priority>
+      <HeroMedia media={bar.hero} priority variant="immersive">
         <div className={styles.heroInner}>
           <div className={styles.heroTopline}>
             <BarHeroNav
@@ -68,7 +68,18 @@ export default async function BarPage({ params }) {
             />
           </div>
 
-          <div className={styles.heroCopy}>
+          <div className={styles.heroBrand}>
+            <Image
+              src={siteData.network.logoUrl}
+              alt={siteData.network.displayName}
+              fill
+              sizes="84px"
+              className={styles.heroBrandImage}
+            />
+          </div>
+
+          <div className={styles.heroStage}>
+            <div className={styles.heroCopy}>
             <p className={styles.kicker}>{bar.hero.eyebrow}</p>
             <h1>{bar.hero.title}</h1>
             <p className={styles.heroSubtitle}>{bar.hero.subtitle}</p>
@@ -87,6 +98,7 @@ export default async function BarPage({ params }) {
                 Позвонить
               </a>
             </div>
+          </div>
           </div>
         </div>
       </HeroMedia>

@@ -6,9 +6,11 @@
   width: min(1220px, calc(100% - 32px));
   min-height: 100svh;
   margin: 0 auto;
-  padding: 32px 0 30px;
+  padding: 26px 0 42px;
   display: grid;
-  align-content: center;
+  grid-template-rows: auto 1fr;
+  align-content: start;
+  gap: 22px;
 }
 
 .kicker,
@@ -20,56 +22,34 @@
   font-size: 0.74rem;
 }
 
-.heroCopy {
-  position: relative;
-  max-width: 51rem;
-  margin: 0 auto;
-  padding: 24px 26px 30px;
-  overflow: hidden;
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-panel);
-  background:
-    linear-gradient(180deg, var(--white-a07), var(--white-a02)),
-    linear-gradient(180deg, var(--ink-a14), var(--ink-a3)),
-    radial-gradient(circle at top left, var(--gold-a1), transparent 32%);
-  backdrop-filter: blur(16px) saturate(118%);
-  box-shadow: var(--shadow-panel-hero);
-  animation: fade-up 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.heroCopy::after {
-  content: "";
-  position: absolute;
-  inset: 18px 18px auto auto;
-  width: 84px;
-  height: 84px;
-  border-top: 1px solid var(--paper-border-a12);
-  border-right: 1px solid var(--paper-border-a12);
-  opacity: 0.7;
-  pointer-events: none;
-}
-
-.heroCopy::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(135deg, var(--white-a12), transparent 26%),
-    radial-gradient(circle at top center, var(--white-a08), transparent 42%);
-  pointer-events: none;
-}
-
-.logoWrap {
+.heroBrand {
   position: relative;
   width: clamp(72px, 11vw, 110px);
   aspect-ratio: 1;
-  margin-bottom: 16px;
+  justify-self: center;
 }
 
-.logo {
+.heroBrandImage {
   object-fit: contain;
   opacity: 0.96;
   filter: drop-shadow(0 16px 30px var(--shadow-dark-a24));
+}
+
+.heroStage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroCopy {
+  max-width: 51rem;
+  margin: 0 auto;
+  padding: 0;
+  animation: fade-up var(--duration-slow) var(--ease-standard) both;
+}
+
+.logoWrap {
+  display: none;
 }
 
 .heroCopy h1,
@@ -79,14 +59,15 @@
 .pillarCard h3,
 .commonCard h3,
 .faqCard h3 {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
 }
 
 .heroCopy h1 {
   max-width: 12ch;
   font-size: clamp(4.2rem, 12vw, 8rem);
-  line-height: 0.86;
+  line-height: 0.9;
   text-wrap: balance;
+  text-transform: uppercase;
 }
 
 .heroSubtitle {
@@ -124,25 +105,13 @@
   padding: 0 22px;
   border: 1px solid transparent;
   border-radius: 999px;
-  font-weight: 700;
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  letter-spacing: var(--button-letter-spacing);
+  line-height: 1;
+  text-decoration: none;
   transition: var(--transition-colors);
-}
-
-.primaryAction::before,
-.secondaryAction::before,
-.cardLink::before {
-  content: "";
-  position: absolute;
-  inset: -1px auto -1px -32%;
-  width: 28%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--white-a34),
-    transparent
-  );
-  transform: skewX(-24deg) translateX(-180%);
-  transition: transform 420ms var(--ease-standard);
 }
 
 .primaryAction {
@@ -258,7 +227,7 @@
 
 .cardImage {
   object-fit: cover;
-  transition: transform 700ms var(--ease-standard);
+  transition: transform var(--duration-slow) var(--ease-standard);
 }
 
 .cardMediaScrim {
@@ -339,6 +308,94 @@
 
 .cardLink {
   margin-top: 22px;
+}
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible,
+.cardLink:focus-visible {
+  outline: none;
+}
+
+.primaryAction:focus-visible {
+  box-shadow:
+    var(--button-primary-inset-hover),
+    var(--shadow-primary-hover),
+    var(--focus-ring),
+    var(--focus-ring-soft);
+}
+
+.secondaryAction:focus-visible,
+.cardLink:focus-visible {
+  color: var(--color-text-strong);
+  box-shadow:
+    inset 0 1px 0 var(--white-a14),
+    var(--focus-ring),
+    var(--focus-ring-soft);
+}
+
+.primaryAction:active,
+.secondaryAction:active,
+.cardLink:active {
+  transform: none;
+}
+
+.primaryAction:active {
+  background: var(--button-primary-bg-active);
+  box-shadow:
+    var(--button-primary-inset),
+    var(--shadow-primary-strong);
+}
+
+.secondaryAction:active,
+.cardLink:active {
+  background: var(--color-secondary-strong);
+}
+
+.actions .primaryAction,
+.actions .secondaryAction {
+  justify-content: flex-start;
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  box-shadow: none;
+}
+
+.actions .primaryAction {
+  color: var(--base-paper-strong);
+}
+
+.actions .secondaryAction {
+  color: var(--color-text-muted);
+}
+
+.actions .primaryAction:focus-visible {
+  color: var(--button-orange-500);
+  box-shadow: none;
+  outline: 2px solid rgba(255, 248, 239, 0.82);
+  outline-offset: 8px;
+}
+
+.actions .secondaryAction:focus-visible {
+  color: var(--color-text-strong);
+  box-shadow: none;
+  outline: 2px solid rgba(255, 248, 239, 0.82);
+  outline-offset: 8px;
+}
+
+.actions .primaryAction:active {
+  background: transparent;
+  color: var(--button-orange-500);
+  box-shadow: none;
+}
+
+.actions .secondaryAction:active {
+  background: transparent;
+  color: var(--base-paper-strong);
 }
 
 .pillarCard,
@@ -446,35 +503,28 @@
   .heroInner {
     width: min(100%, calc(100% - 24px));
     min-height: 100svh;
-    padding-top: max(20px, env(safe-area-inset-top));
+    padding-top: max(18px, env(safe-area-inset-top));
     padding-bottom: max(26px, env(safe-area-inset-bottom));
-    gap: 18px;
-    align-content: center;
+    gap: 16px;
+  }
+
+  .heroBrand {
+    width: 72px;
+  }
+
+  .heroStage {
+    justify-content: flex-start;
+    align-items: end;
   }
 
   .heroCopy {
     max-width: 100%;
-    margin: auto 0;
-    padding: 24px 18px 22px;
-    background:
-      linear-gradient(180deg, var(--ink-a26), rgba(14, 11, 10, 0.5)),
-      radial-gradient(circle at top left, var(--gold-a08), transparent 34%);
-  }
-
-  .heroCopy::after {
-    inset: 14px 14px auto auto;
-    width: 64px;
-    height: 64px;
-  }
-
-  .logoWrap {
-    width: 72px;
-    margin-bottom: 14px;
+    margin: 0;
   }
 
   .heroCopy h1 {
-    font-size: clamp(3.45rem, 15vw, 4.9rem);
-    line-height: 0.9;
+    font-size: clamp(3.4rem, 15vw, 4.9rem);
+    line-height: 0.94;
   }
 
   .heroSubtitle {
@@ -490,16 +540,14 @@
   }
 
   .actions {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    gap: 18px;
     margin-top: 24px;
   }
 
-  .primaryAction,
-  .secondaryAction {
-    min-height: 48px;
-    padding: 0 18px;
-    width: 100%;
+  .actions .primaryAction,
+  .actions .secondaryAction {
+    width: auto;
   }
 
   .cardMedia {
@@ -534,12 +582,6 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .primaryAction:hover::before,
-  .secondaryAction:hover::before,
-  .cardLink:hover::before {
-    transform: skewX(-24deg) translateX(540%);
-  }
-
   .primaryAction:hover {
     background: var(--button-primary-bg-hover);
     color: var(--button-primary-text-hover);
@@ -547,7 +589,6 @@
     box-shadow:
       var(--button-primary-inset-hover),
       var(--shadow-primary-hover-strong);
-    filter: saturate(1.03);
   }
 
   .secondaryAction:hover,
@@ -555,6 +596,18 @@
     background: var(--color-secondary-hover);
     color: var(--color-text-strong);
     box-shadow: inset 0 1px 0 var(--white-a14);
+  }
+
+  .actions .primaryAction:hover {
+    background: transparent;
+    color: var(--button-orange-500);
+    box-shadow: none;
+  }
+
+  .actions .secondaryAction:hover {
+    background: transparent;
+    color: var(--base-paper-strong);
+    box-shadow: none;
   }
 
   .pillarCard:hover,
@@ -587,13 +640,8 @@
 
 @media (min-width: 980px) {
   .heroInner {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "copy";
-    align-items: stretch;
-  }
-
-  .heroCopy {
-    grid-area: copy;
+    padding: 28px 0 44px;
+    gap: 12px;
   }
 
   .journeyWrap,
@@ -617,12 +665,6 @@
   .journeyItem,
   .cardImage {
     transition: none;
-  }
-
-  .primaryAction::before,
-  .secondaryAction::before,
-  .cardLink::before {
-    display: none;
   }
 }
 
