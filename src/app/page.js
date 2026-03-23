@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { HeroMedia } from "@/components/hero-media";
 import { JsonLd } from "@/components/json-ld";
 import { NetworkPointsSection } from "@/components/network-points";
@@ -22,48 +21,29 @@ export default async function HomePage() {
   const { network, bars } = siteData;
 
   return (
-    <div className={styles.page}>
+    <div id="page-top" className={styles.page}>
       <JsonLd data={buildNetworkSchema(siteData)} />
 
       <HeroMedia media={network.hero.media} priority variant="immersive">
         <div className={styles.heroInner}>
-          <div className={styles.heroBrand}>
-            <Image
-              src={network.logoUrl}
-              alt="Р›РѕРіРѕС‚РёРї СЃРµС‚Рё Р‘Р°СЂ Р©СѓРєР°"
-              fill
-              sizes="108px"
-              className={styles.heroBrandImage}
-            />
-          </div>
-
           <div className={styles.heroStage}>
             <div className={styles.heroCopy}>
-            <div className={styles.logoWrap}>
-              <Image
-                src={network.logoUrl}
-                alt="Логотип сети Бар Щука"
-                fill
-                sizes="108px"
-                className={styles.logo}
-              />
-            </div>
-            <h1>{network.hero.title}</h1>
-            <p className={styles.heroSubtitle}>{network.hero.subtitle}</p>
-            <p className={styles.heroDescription}>{network.hero.description}</p>
+              <h1>{network.hero.title}</h1>
+              <p className={styles.heroSubtitle}>{network.hero.subtitle}</p>
+              <p className={styles.heroDescription}>{network.hero.description}</p>
 
-            <div className={styles.actions}>
-              <a className={styles.primaryAction} href="#bars">
-                Выбрать бар
-              </a>
-              <a
-                className={styles.secondaryAction}
-                href={`tel:${network.phoneE164}`}
-              >
-                Позвонить
-              </a>
+              <div className={styles.actions}>
+                <a className={styles.primaryAction} href="#bars">
+                  Выбрать бар
+                </a>
+                <a
+                  className={styles.secondaryAction}
+                  href={`tel:${network.phoneE164}`}
+                >
+                  Позвонить
+                </a>
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </HeroMedia>
@@ -115,37 +95,6 @@ export default async function HomePage() {
               <article key={item.title} className={styles.commonCard}>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <div className={styles.journeyWrap}>
-            <div className={styles.sectionHeading}>
-              <p className={styles.sectionKicker}>Сценарий</p>
-              <h2>Как пользователь двигается по сети</h2>
-            </div>
-            <ol className={styles.journeyList}>
-              {network.journey.map((step) => (
-                <li key={step} className={styles.journeyItem}>
-                  {step}
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <div className={styles.sectionHeading}>
-            <p className={styles.sectionKicker}>FAQ</p>
-            <h2>Коротко отвечаем на базовые вопросы о сети</h2>
-          </div>
-          <div className={styles.faqGrid}>
-            {network.faq.map((item) => (
-              <article key={item.question} className={styles.faqCard}>
-                <h3>{item.question}</h3>
-                <p>{item.answer}</p>
               </article>
             ))}
           </div>

@@ -127,7 +127,6 @@
 
 .primaryAction,
 .secondaryAction,
-.contactTile a,
 .placeholderLink {
   display: inline-flex;
   align-items: center;
@@ -152,8 +151,7 @@
 }
 
 .secondaryAction,
-.placeholderLink,
-.contactTile a {
+.placeholderLink {
   color: var(--color-text-muted);
   background: transparent;
   box-shadow: none;
@@ -207,33 +205,12 @@
   line-height: 0.96;
 }
 
-.contactTile {
-  padding: 18px;
-  border: 1px solid var(--paper-border-a12);
-  background: var(--white-a05);
-  backdrop-filter: blur(12px) saturate(114%);
-  border-radius: var(--radius-tile);
-}
-
-.contactTile span {
-  display: block;
-  color: var(--color-text-muted);
-  margin-bottom: 8px;
-}
-
-.contactTile strong {
-  display: block;
-  font-size: 1.05rem;
-  line-height: 1.4;
-}
-
 .sectionHeading {
   max-width: 44rem;
 }
 
 .cardGrid,
-.galleryGrid,
-.contactsGrid {
+.galleryGrid {
   display: grid;
   gap: 18px;
   margin-top: 24px;
@@ -303,7 +280,8 @@
 
 .primaryAction:focus-visible,
 .secondaryAction:focus-visible,
-.contactTile a:focus-visible,
+.contactActions a:focus-visible,
+.switchOption:focus-visible,
 .placeholderLink:focus-visible {
   outline: none;
 }
@@ -316,7 +294,8 @@
 }
 
 .secondaryAction:focus-visible,
-.contactTile a:focus-visible,
+.contactActions a:focus-visible,
+.switchOption:focus-visible,
 .placeholderLink:focus-visible {
   color: var(--color-text-strong);
   box-shadow: none;
@@ -326,7 +305,6 @@
 
 .primaryAction:active,
 .secondaryAction:active,
-.contactTile a:active,
 .placeholderLink:active {
   transform: none;
 }
@@ -337,7 +315,6 @@
 }
 
 .secondaryAction:active,
-.contactTile a:active,
 .placeholderLink:active {
   color: var(--color-text-strong);
   background: transparent;
@@ -391,15 +368,89 @@
   padding-bottom: 12px;
 }
 
-.contactsGrid {
-  margin-top: 0;
-}
-
-.socialLinks {
+.contactActions {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 14px 20px;
+  margin-top: 24px;
+}
+
+.contactActions a,
+.switchOption {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--button-font-family);
+  font-size: 0.94rem;
+  font-weight: var(--button-font-weight);
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: var(--transition-colors);
+}
+
+.switchPanel {
+  display: grid;
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid var(--paper-border-a12);
+  background: var(--white-a05);
+  backdrop-filter: blur(12px) saturate(114%);
+  border-radius: var(--radius-tile);
+}
+
+.switchLabel {
+  color: var(--color-accent);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+}
+
+.switchGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.switchOption {
+  display: grid;
+  gap: 6px;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--paper-border-a12);
+}
+
+.switchOption:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.switchOptionTitle {
+  color: var(--base-paper-strong);
+  font-size: 1.04rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.switchOptionMeta {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.switchOptionState {
+  color: var(--color-accent);
+  font-size: 0.72rem;
+}
+
+.switchOptionCurrent {
+  cursor: default;
+  opacity: 0.9;
 }
 
 @media (max-width: 759px) {
@@ -452,7 +503,6 @@
 
   .primaryAction,
   .secondaryAction,
-  .contactTile a,
   .placeholderLink {
     width: auto;
   }
@@ -485,15 +535,13 @@
     line-height: 0.98;
   }
 
-  .contactTile,
   .bestForItem,
   .infoCard {
     padding: 16px;
   }
 
   .cardGrid,
-  .galleryGrid,
-  .contactsGrid {
+  .galleryGrid {
     gap: 14px;
     margin-top: 18px;
   }
@@ -506,12 +554,16 @@
     min-height: 220px;
   }
 
-  .socialLinks {
-    gap: 8px;
+  .contactActions {
+    gap: 12px 16px;
   }
 
-  .socialLinks a {
+  .contactActions a {
     width: 100%;
+  }
+
+  .switchPanel {
+    padding: 16px;
   }
 }
 
@@ -523,13 +575,15 @@
   }
 
   .secondaryAction:hover,
-  .contactTile a:hover,
+  .contactActions a:hover,
+  .switchOption:hover,
   .placeholderLink:hover {
     box-shadow: none;
   }
 
   .secondaryAction:hover,
-  .contactTile a:hover,
+  .contactActions a:hover,
+  .switchOption:hover,
   .placeholderLink:hover {
     background: transparent;
     color: var(--base-paper-strong);
@@ -550,8 +604,7 @@
 
 @media (min-width: 760px) {
   .cardGrid,
-  .galleryGrid,
-  .contactsGrid {
+  .galleryGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -578,7 +631,8 @@
 @media (prefers-reduced-motion: reduce) {
   .primaryAction,
   .secondaryAction,
-  .contactTile a,
+  .contactActions a,
+  .switchOption,
   .placeholderLink {
     transition: none;
   }

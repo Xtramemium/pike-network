@@ -66,9 +66,10 @@ export default async function BarPage({ params }) {
 
   const heroEyebrow = formatHeroEyebrow(bar);
   const heroLocation = formatHeroLocation(bar);
+  const networkBars = siteData.bars;
 
   return (
-    <div className={styles.page}>
+    <div id="page-top" className={styles.page}>
       <JsonLd data={buildBarSchema(bar)} />
 
       <HeroMedia media={bar.hero} priority variant="immersive">
@@ -87,6 +88,7 @@ export default async function BarPage({ params }) {
               fill
               sizes="84px"
               className={styles.heroBrandImage}
+              unoptimized
             />
           </div>
 
@@ -194,48 +196,58 @@ export default async function BarPage({ params }) {
         >
           <div className={styles.contactsCard}>
             <div>
-              <p className={styles.sectionKicker}>Контакты</p>
-              <h2>Простая логика записи: пока только звонок</h2>
+              <p className={styles.sectionKicker}>Сеть</p>
+              <h2>Если нужна другая точка, переключайтесь без лишних шагов</h2>
               <p className={styles.contactsCopy}>
-                На этом этапе оставляем самый понятный сценарий: телефон, адрес
-                и переход на карту. Формы и бронирование можно добавить позже
-                отдельным этапом.
+                Основной сценарий остаётся простым: позвонить, открыть карту
+                или сразу перейти на другую локацию сети, если эта точка вам не
+                подходит.
               </p>
+
+              <div className={styles.contactActions}>
+                <a href={`tel:${bar.phoneE164}`}>Позвонить</a>
+                <a href={bar.mapUrl} target="_blank" rel="noreferrer">
+                  Открыть карту
+                </a>
+              </div>
             </div>
 
-            <div className={styles.contactsGrid}>
-              <article className={styles.contactTile}>
-                <span>Адрес</span>
-                <strong>{bar.addressLine}</strong>
-                <a href={bar.mapUrl} target="_blank" rel="noreferrer">
-                  Открыть на карте
-                </a>
-              </article>
-              <article className={styles.contactTile}>
-                <span>Телефон</span>
-                <strong>{bar.phoneDisplay}</strong>
-                <a href={`tel:${bar.phoneE164}`}>Позвонить</a>
-              </article>
-              <article className={styles.contactTile}>
-                <span>Часы работы</span>
-                <strong>{bar.hours[0]}</strong>
-                <strong>{bar.hours[1]}</strong>
-              </article>
-              <article className={styles.contactTile}>
-                <span>Соцсети</span>
-                <div className={styles.socialLinks}>
-                  {bar.socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noreferrer"
+            <div className={styles.switchPanel}>
+              <p className={styles.switchLabel}>Выбрать другой бар</p>
+              <div className={styles.switchGrid}>
+                {networkBars.map((networkBar) => {
+                  const isCurrentBar = networkBar.slug === bar.slug;
+
+                  return isCurrentBar ? (
+                    <div
+                      key={networkBar.slug}
+                      className={`${styles.switchOption} ${styles.switchOptionCurrent}`}
                     >
-                      {social.label}
-                    </a>
-                  ))}
-                </div>
-              </article>
+                      <span className={styles.switchOptionTitle}>
+                        {networkBar.shortLabel}
+                      </span>
+                      <span className={styles.switchOptionMeta}>
+                        {networkBar.addressLine}
+                      </span>
+                      <span className={styles.switchOptionState}>Вы сейчас здесь</span>
+                    </div>
+                  ) : (
+                    <Link
+                      key={networkBar.slug}
+                      href={`/bars/${networkBar.slug}`}
+                      className={styles.switchOption}
+                    >
+                      <span className={styles.switchOptionTitle}>
+                        {networkBar.shortLabel}
+                      </span>
+                      <span className={styles.switchOptionMeta}>
+                        {networkBar.addressLine}
+                      </span>
+                      <span className={styles.switchOptionState}>Открыть страницу</span>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
