@@ -1,5 +1,47 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./network-points.module.css";
+
+const DESKTOP_POINTER_QUERY = "(hover: hover) and (pointer: fine)";
+
+function supportsDesktopPointer() {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia(DESKTOP_POINTER_QUERY).matches
+  );
+}
+
+function updatePointerDepth(event) {
+  if (event.pointerType && event.pointerType !== "mouse") {
+    return;
+  }
+
+  if (!supportsDesktopPointer()) {
+    return;
+  }
+
+  const card = event.currentTarget;
+  const rect = card.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  const ratioX = x / rect.width - 0.5;
+  const ratioY = y / rect.height - 0.5;
+
+  card.style.setProperty("--press-x", `${x}px`);
+  card.style.setProperty("--press-y", `${y}px`);
+  card.style.setProperty("--press-rotate-x", `${(-ratioY * 6.8).toFixed(2)}deg`);
+  card.style.setProperty("--press-rotate-y", `${(ratioX * 8.4).toFixed(2)}deg`);
+}
+
+function resetPointerDepth(event) {
+  const card = event.currentTarget;
+
+  card.style.setProperty("--press-x", "50%");
+  card.style.setProperty("--press-y", "50%");
+  card.style.setProperty("--press-rotate-x", "0deg");
+  card.style.setProperty("--press-rotate-y", "0deg");
+}
 
 export function NetworkPointsSection({ bars }) {
   const barsCountLabel =
@@ -27,6 +69,8 @@ export function NetworkPointsSection({ bars }) {
             key={bar.slug}
             href={`/bars/${bar.slug}`}
             className={styles.pointOption}
+            onPointerMove={updatePointerDepth}
+            onPointerLeave={resetPointerDepth}
           >
             <span className={styles.pointOptionTopline}>
               <span className={styles.pointOptionIndex}>Бар {String(index + 1).padStart(2, "0")}</span>
