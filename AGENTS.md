@@ -19,6 +19,7 @@
 - Read helpers in `src/lib/content/get-site-data.js` feed the root page and the bar route at `src/app/bars/[slug]/page.js`.
 - Adding or changing a bar currently means updating `mockSiteData.bars`; `generateStaticParams()` builds the `/bars/[slug]` routes from that list.
 - Temporary frontend media belongs in `public/mock` and should be referenced by URL string paths, per `docs/mock-media.md`.
+- When changing navigation, layout, or content groupings for the network, prefer patterns that remain compact and usable as the number of bars grows; always design with project scalability in mind.
 
 ## TODO
 

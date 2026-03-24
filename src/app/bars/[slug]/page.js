@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HeroMedia } from "@/components/hero-media";
@@ -81,17 +80,6 @@ export default async function BarPage({ params }) {
             />
           </div>
 
-          <div className={styles.heroBrand}>
-            <Image
-              src={siteData.network.logoUrl}
-              alt={siteData.network.displayName}
-              fill
-              sizes="84px"
-              className={styles.heroBrandImage}
-              unoptimized
-            />
-          </div>
-
           <div className={styles.heroStage}>
             <div className={styles.heroCopy}>
             <p className={styles.kicker}>{heroEyebrow}</p>
@@ -165,23 +153,6 @@ export default async function BarPage({ params }) {
           </div>
         </section>
 
-        <section id="events" className={styles.section}>
-          <div className={styles.sectionHeading}>
-            <p className={styles.sectionKicker}>События</p>
-            <h2>У каждой точки свой собственный контентный сценарий</h2>
-          </div>
-          <div className={styles.cardGrid}>
-            {bar.events.map((event) => (
-              <article key={event.title} className={styles.infoCard}>
-                <p className={styles.infoCardStatus}>Локально для точки</p>
-                <p className={styles.eventTiming}>{event.timing}</p>
-                <h3>{event.title}</h3>
-                <p>{event.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section id="gallery" className={styles.section}>
           <div className={styles.sectionHeading}>
             <p className={styles.sectionKicker}>Галерея</p>
@@ -197,11 +168,10 @@ export default async function BarPage({ params }) {
           <div className={styles.contactsCard}>
             <div>
               <p className={styles.sectionKicker}>Сеть</p>
-              <h2>Если нужна другая точка, переключайтесь без лишних шагов</h2>
+              <h2>Быстро переключиться между барами сети</h2>
               <p className={styles.contactsCopy}>
-                Основной сценарий остаётся простым: позвонить, открыть карту
-                или сразу перейти на другую локацию сети, если эта точка вам не
-                подходит.
+                Если эта точка не подходит, можно сразу открыть другую локацию
+                сети, не теряя контекст и не возвращаясь на главную.
               </p>
 
               <div className={styles.contactActions}>
@@ -213,7 +183,7 @@ export default async function BarPage({ params }) {
             </div>
 
             <div className={styles.switchPanel}>
-              <p className={styles.switchLabel}>Выбрать другой бар</p>
+              <p className={styles.switchLabel}>Другие локации</p>
               <div className={styles.switchGrid}>
                 {networkBars.map((networkBar) => {
                   const isCurrentBar = networkBar.slug === bar.slug;
@@ -253,7 +223,7 @@ export default async function BarPage({ params }) {
         </section>
       </main>
 
-      <SiteFooter network={siteData.network} bars={siteData.bars} />
+      <SiteFooter network={siteData.network} />
     </div>
   );
 }

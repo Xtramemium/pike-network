@@ -8,25 +8,13 @@
   margin: 0 auto;
   padding: 26px 0 42px;
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto 1fr;
   align-content: start;
-  gap: 18px;
+  gap: 28px;
 }
 
 .heroTopline {
   width: 100%;
-}
-
-.heroBrand {
-  position: relative;
-  width: 84px;
-  aspect-ratio: 1;
-  justify-self: center;
-}
-
-.heroBrandImage {
-  object-fit: contain;
-  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.28));
 }
 
 .heroStage {
@@ -201,8 +189,8 @@
 .sectionHeading h2,
 .contactsCard h2 {
   margin-top: 12px;
-  font-size: clamp(2.3rem, 6vw, 4rem);
-  line-height: 0.96;
+  font-size: clamp(1.9rem, 4.8vw, 3.2rem);
+  line-height: 1;
 }
 
 .sectionHeading {
@@ -397,12 +385,13 @@
 
 .switchPanel {
   display: grid;
-  gap: 18px;
-  padding: 18px;
+  gap: 14px;
+  padding: 16px;
   border: 1px solid var(--paper-border-a12);
   background: var(--white-a05);
   backdrop-filter: blur(12px) saturate(114%);
   border-radius: var(--radius-tile);
+  min-width: 0;
 }
 
 .switchLabel {
@@ -414,19 +403,28 @@
 
 .switchGrid {
   display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(15rem, 17.5rem);
   gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
 }
 
 .switchOption {
   display: grid;
   gap: 6px;
-  padding: 14px 0 0;
-  border-top: 1px solid var(--paper-border-a12);
+  min-height: 100%;
+  padding: 14px;
+  border: 1px solid var(--paper-border-a12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+  scroll-snap-align: start;
 }
 
 .switchOption:first-child {
-  padding-top: 0;
-  border-top: 0;
+  padding-top: 14px;
 }
 
 .switchOptionTitle {
@@ -451,6 +449,7 @@
 .switchOptionCurrent {
   cursor: default;
   opacity: 0.9;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 @media (max-width: 759px) {
@@ -459,11 +458,7 @@
     min-height: 100svh;
     padding-top: max(18px, env(safe-area-inset-top));
     padding-bottom: max(26px, env(safe-area-inset-bottom));
-    gap: 16px;
-  }
-
-  .heroBrand {
-    width: 72px;
+    gap: 18px;
   }
 
   .heroStage {
@@ -531,8 +526,8 @@
 
   .sectionHeading h2,
   .contactsCard h2 {
-    font-size: clamp(2rem, 9vw, 3rem);
-    line-height: 0.98;
+    font-size: clamp(1.8rem, 8vw, 2.45rem);
+    line-height: 1.02;
   }
 
   .bestForItem,
@@ -564,6 +559,10 @@
 
   .switchPanel {
     padding: 16px;
+  }
+
+  .switchGrid {
+    grid-auto-columns: minmax(13.5rem, 15rem);
   }
 }
 
@@ -618,7 +617,7 @@
   .heroInner {
     width: min(1220px, calc(100% - 40px));
     padding: 28px 0 44px;
-    gap: 12px;
+    gap: 22px;
   }
 
   .contactsCard,

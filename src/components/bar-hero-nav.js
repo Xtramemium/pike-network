@@ -8,7 +8,6 @@ export function BarHeroNav({ phoneDisplay, phoneE164 }) {
   const [isOpen, setIsOpen] = useState(false);
   const navItems = [
     { href: "#menu", label: "Меню" },
-    { href: "#events", label: "События" },
     { href: "#gallery", label: "Галерея" },
     { href: "#contacts", label: "Контакты" },
   ];

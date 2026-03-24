@@ -119,7 +119,7 @@ export default async function HomePage() {
         </section>
       </main>
 
-      <SiteFooter network={network} bars={bars} />
+      <SiteFooter network={network} />
     </div>
   );
 }

@@ -21,7 +21,8 @@
   color: rgba(255, 248, 239, 0.74);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 0.76rem;
+  font-size: 0.98rem;
+  font-weight: 500;
   box-shadow: none;
   transition: color var(--duration-medium) var(--ease-standard);
 }
@@ -34,7 +35,7 @@
 .desktopNav {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 18px;
   justify-content: center;
   flex: 1 1 auto;
 }
@@ -253,11 +254,11 @@
   text-transform: uppercase;
 }
 
-.mobileNavLabel {
-  padding-right: 48px;
-  font-size: 1.18rem;
-  line-height: 1.1;
-}
+  .mobileNavLabel {
+    padding-right: 48px;
+    font-size: 1.28rem;
+    line-height: 1.1;
+  }
 
 .mobilePhone {
   min-height: auto;
@@ -414,7 +415,7 @@
 
   .mobileNavLabel {
     padding-right: 40px;
-    font-size: 1.08rem;
+    font-size: 1.18rem;
   }
 
   .mobileNavItem::after {
