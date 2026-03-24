@@ -144,10 +144,6 @@
     padding: 24px 0 22px;
   }
 
-  .lead {
-    gap: 18px;
-  }
-
   .primaryContact {
     width: 100%;
     justify-content: flex-start;
@@ -157,14 +153,19 @@
 
   .leadActions {
     display: grid;
-    gap: 18px;
+    gap: 22px;
   }
 
   .contactGroup {
+    gap: 14px;
     min-width: 0;
   }
 
-  .socials,
+  .socials {
+    gap: 14px 16px;
+    min-height: auto;
+  }
+
   .bottomRow {
     gap: 12px 16px;
   }

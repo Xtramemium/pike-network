@@ -83,7 +83,7 @@ export default async function BarPage({ params }) {
           <div className={styles.heroStage}>
             <div className={styles.heroCopy}>
             <p className={styles.kicker}>{heroEyebrow}</p>
-            <h1>{bar.name.replace(/^Бар\s+/i, "")}</h1>
+            <h1 className={styles.srOnly}>{bar.shortLabel}</h1>
             <p className={styles.heroLocation}>{heroLocation}</p>
 
             <div className={styles.heroMeta}>
@@ -184,6 +184,7 @@ export default async function BarPage({ params }) {
 
             <div className={styles.switchPanel}>
               <p className={styles.switchLabel}>Другие локации</p>
+              <p className={styles.switchHint}>Листайте, чтобы увидеть все локации</p>
               <div className={styles.switchGrid}>
                 {networkBars.map((networkBar) => {
                   const isCurrentBar = networkBar.slug === bar.slug;
