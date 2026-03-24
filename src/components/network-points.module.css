@@ -96,7 +96,7 @@
 
 .pointOptionName {
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(1.75rem, 8vw, 2.25rem);
+  font-size: var(--type-display-card);
   line-height: 0.94;
 }
 

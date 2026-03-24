@@ -14,7 +14,7 @@
 }
 
 .immersive {
-  min-height: 100svh;
+  min-height: 92svh;
 }
 
 .mediaLayer {
@@ -55,9 +55,7 @@
 }
 
 .immersive .scrim {
-  background:
-    linear-gradient(90deg, rgba(9, 7, 7, 0.76), rgba(9, 7, 7, 0.34) 34%, rgba(9, 7, 7, 0.16) 58%, rgba(9, 7, 7, 0.52)),
-    linear-gradient(180deg, rgba(7, 6, 5, 0.28), rgba(7, 6, 5, 0.56));
+  background: rgba(10, 8, 7, 0.42);
 }
 
 .content {
@@ -71,7 +69,7 @@
 }
 
 .immersive .content {
-  min-height: 100svh;
+  min-height: 92svh;
 }
 
 @media (max-width: 759px) {
@@ -105,9 +103,7 @@
   }
 
   .immersive .scrim {
-    background:
-      linear-gradient(180deg, rgba(7, 6, 5, 0.3), rgba(7, 6, 5, 0.68) 100%),
-      linear-gradient(90deg, rgba(12, 9, 8, 0.82), rgba(12, 9, 8, 0.22) 54%, rgba(12, 9, 8, 0.58));
+    background: rgba(10, 8, 7, 0.48);
   }
 }
 

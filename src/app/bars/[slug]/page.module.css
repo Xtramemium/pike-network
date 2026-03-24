@@ -4,9 +4,9 @@
 
 .heroInner {
   width: min(1180px, calc(100% - 32px));
-  min-height: 100svh;
+  min-height: 90svh;
   margin: 0 auto;
-  padding: 26px 0 42px;
+  padding: 20px 0 34px;
   display: grid;
   grid-template-rows: auto 1fr;
   align-content: start;
@@ -24,7 +24,7 @@
 }
 
 .heroCopy {
-  width: min(34rem, 100%);
+  width: min(30rem, 100%);
   padding: 0;
 }
 
@@ -59,7 +59,7 @@
 .heroLocation {
   margin-top: 12px;
   color: var(--base-paper-strong);
-  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  font-size: var(--type-display-location);
   line-height: 1.02;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -105,6 +105,7 @@
   box-shadow: none;
   text-decoration: none;
   border-bottom: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .actions .primaryAction {
@@ -193,7 +194,7 @@
 .sectionHeading h2,
 .contactsCard h2 {
   margin-top: 12px;
-  font-size: clamp(1.9rem, 4.8vw, 3.2rem);
+  font-size: var(--type-display-section);
   line-height: 1;
 }
 
@@ -228,7 +229,7 @@
 
 .infoCard h3 {
   margin-top: 12px;
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: var(--type-display-card);
   line-height: 0.96;
 }
 
@@ -279,7 +280,7 @@
 }
 
 .primaryAction:focus-visible {
-  color: var(--button-orange-500);
+  color: var(--orange-350);
   box-shadow: none;
   outline: 2px solid rgba(255, 248, 239, 0.82);
   outline-offset: 8px;
@@ -302,7 +303,7 @@
 }
 
 .primaryAction:active {
-  color: var(--button-orange-500);
+  color: var(--orange-350);
   box-shadow: none;
 }
 
@@ -360,6 +361,10 @@
   padding-bottom: 12px;
 }
 
+.contactsIntro {
+  max-width: 24rem;
+}
+
 .contactActions {
   display: flex;
   flex-wrap: wrap;
@@ -387,14 +392,10 @@
   transition: var(--transition-colors);
 }
 
-.switchPanel {
+.switchSection {
   display: grid;
-  gap: 14px;
-  padding: 16px;
-  border: 1px solid var(--paper-border-a12);
-  background: var(--white-a05);
-  backdrop-filter: blur(12px) saturate(114%);
-  border-radius: var(--radius-tile);
+  align-content: start;
+  gap: 16px;
   min-width: 0;
 }
 
@@ -403,13 +404,6 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-size: 0.74rem;
-}
-
-.switchHint {
-  display: none;
-  color: var(--color-text-muted);
-  font-size: 0.84rem;
-  line-height: 1.5;
 }
 
 .switchGrid {
@@ -563,14 +557,6 @@
     width: 100%;
   }
 
-  .switchPanel {
-    padding: 16px;
-  }
-
-  .switchHint {
-    display: block;
-  }
-
   .switchGrid {
     grid-auto-flow: column;
     grid-auto-columns: minmax(13.5rem, 15rem);
@@ -582,10 +568,17 @@
   }
 }
 
+@media (min-width: 980px) {
+  .contactsCard {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .primaryAction:hover {
     background: transparent;
-    color: var(--button-orange-500);
+    color: var(--orange-350);
     box-shadow: none;
   }
 

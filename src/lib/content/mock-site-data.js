@@ -1,5 +1,8 @@
 const sharedPhoneDisplay = "+7 (925) 191-57-10";
 const sharedPhoneE164 = "+79251915710";
+const sharedMapUrl = "https://yandex.com/maps/-/CPR3aEoB";
+const networkMapSearchUrl =
+  "https://yandex.com/maps/?text=%D0%91%D0%B0%D1%80%20%D0%A9%D1%83%D0%BA%D0%B0%20%D0%9B%D1%8E%D0%B1%D0%B5%D1%80%D1%86%D1%8B";
 const sharedHours = [
   "Пн-Чт, Вс · 16:00-02:00",
   "Пт-Сб · 16:00-04:00",
@@ -10,12 +13,6 @@ const sharedSocials = [
   { label: "VK", href: "https://vk.com/pikebeer" },
 ];
 
-function buildMapUrl(addressLine) {
-  return `https://yandex.ru/maps/?text=${encodeURIComponent(
-    `${addressLine}, Люберцы`
-  )}`;
-}
-
 export const mockSiteData = {
   network: {
     name: "Бар Щука",
@@ -23,12 +20,12 @@ export const mockSiteData = {
     logoUrl: "/Лого-Щука.svg",
     phoneDisplay: sharedPhoneDisplay,
     phoneE164: sharedPhoneE164,
+    mapSearchUrl: networkMapSearchUrl,
     locale: "ru-RU",
     routeStrategy: "single-domain-bars-slug",
     hero: {
       eyebrow: "Сеть баров",
       title: "Бар Щука",
-      subtitle: "Две точки, один характер, один ритм вечера.",
       description:
         "Собираем спорт, кухню, музыку и дружескую атмосферу в разных локациях города, чтобы у каждой точки был свой вайб, но узнаваемый характер Щуки.",
       media: {
@@ -168,7 +165,7 @@ export const mockSiteData = {
             "Точка с более камерным настроением, где важны барная подача, свет и плотный визуальный характер.",
         },
       ],
-      mapUrl: buildMapUrl("ул. 8 Марта, 18к1"),
+      mapUrl: sharedMapUrl,
       socialLinks: sharedSocials,
       seo: {
         title: 'Бар Щука на 8 Марта | Люберцы',
@@ -262,7 +259,7 @@ export const mockSiteData = {
             "Страница уже готова под будущие анонсы формата конкретного бара: от матчей до тематических вечеров.",
         },
       ],
-      mapUrl: buildMapUrl("ул. 9 Марта, 19к2"),
+      mapUrl: sharedMapUrl,
       socialLinks: sharedSocials,
       seo: {
         title: 'Бар Щука на 9 Марта | Люберцы',

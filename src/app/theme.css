@@ -14,9 +14,9 @@
   --orange-450: #de7a47;
   --orange-400: #e79268;
   --orange-350: #efab8b;
-  --button-orange-500: #bd4d14;
-  --button-orange-600: #af4a15;
-  --button-orange-700: #9d4112;
+  --button-orange-500: #e79268;
+  --button-orange-600: #de7a47;
+  --button-orange-700: #d46a35;
   --green-300: #9fc89a;
   --amber-300: #efcf8d;
   --red-300: #f0a7a0;
@@ -182,6 +182,12 @@
   --button-font-size: 1.02rem;
   --button-font-weight: 400;
   --button-letter-spacing: 0.035em;
+
+  /* Type scale */
+  --type-display-hero: clamp(3.2rem, 7.2vw, 5.6rem);
+  --type-display-section: clamp(1.8rem, 3.8vw, 2.9rem);
+  --type-display-card: clamp(1.55rem, 3vw, 2.2rem);
+  --type-display-location: clamp(1.7rem, 3.1vw, 2.3rem);
 
   /* Motion */
   --ease-standard: cubic-bezier(0.2, 0.9, 0.24, 1);

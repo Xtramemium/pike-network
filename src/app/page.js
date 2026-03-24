@@ -29,20 +29,30 @@ export default async function HomePage() {
           <div className={styles.heroStage}>
             <div className={styles.heroCopy}>
               <h1>{network.hero.title}</h1>
-              <p className={styles.heroSubtitle}>{network.hero.subtitle}</p>
-              <p className={styles.heroDescription}>{network.hero.description}</p>
 
               <div className={styles.actions}>
                 <a className={styles.primaryAction} href="#bars">
                   Выбрать бар
                 </a>
-                <a
-                  className={styles.secondaryAction}
-                  href={`tel:${network.phoneE164}`}
-                >
-                  Позвонить
-                </a>
+                <div className={styles.heroUtilityActions}>
+                  <a
+                    className={styles.secondaryAction}
+                    href={network.mapSearchUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Все бары сети
+                  </a>
+                  <a
+                    className={`${styles.secondaryAction} ${styles.phoneAction}`}
+                    href={`tel:${network.phoneE164}`}
+                  >
+                    Позвонить
+                  </a>
+                </div>
               </div>
+
+              <p className={styles.heroDescription}>{network.hero.description}</p>
             </div>
           </div>
         </div>
@@ -97,24 +107,6 @@ export default async function HomePage() {
                 <p>{item.description}</p>
               </article>
             ))}
-          </div>
-        </section>
-
-        <section id="call" className={`${styles.section} ${styles.ctaSection}`}>
-          <div className={styles.ctaCard}>
-            <div>
-              <p className={styles.sectionKicker}>Общий CTA</p>
-              <h2>{network.cta.title}</h2>
-              <p>{network.cta.description}</p>
-            </div>
-            <div className={styles.ctaActions}>
-              <a className={styles.primaryAction} href={`tel:${network.phoneE164}`}>
-                {network.phoneDisplay}
-              </a>
-              <a className={styles.secondaryAction} href="#bars">
-                Перейти к выбору бара
-              </a>
-            </div>
           </div>
         </section>
       </main>

@@ -82,25 +82,30 @@ export default async function BarPage({ params }) {
 
           <div className={styles.heroStage}>
             <div className={styles.heroCopy}>
-            <p className={styles.kicker}>{heroEyebrow}</p>
-            <h1 className={styles.srOnly}>{bar.shortLabel}</h1>
-            <p className={styles.heroLocation}>{heroLocation}</p>
+              <p className={styles.kicker}>{heroEyebrow}</p>
+              <h1 className={styles.srOnly}>{bar.shortLabel}</h1>
+              <p className={styles.heroLocation}>{heroLocation}</p>
 
-            <div className={styles.heroMeta}>
-              {bar.hours.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
+              <div className={styles.heroMeta}>
+                {bar.hours.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
 
-            <div className={styles.actions}>
-              <a className={styles.primaryAction} href="#menu">
-                Меню
-              </a>
-              <a className={styles.secondaryAction} href={`tel:${bar.phoneE164}`}>
-                Позвонить
-              </a>
+              <div className={styles.actions}>
+                <a className={styles.secondaryAction} href={`tel:${bar.phoneE164}`}>
+                  Позвонить
+                </a>
+                <a
+                  className={styles.secondaryAction}
+                  href={bar.mapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Показать на карте
+                </a>
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </HeroMedia>
@@ -166,13 +171,9 @@ export default async function BarPage({ params }) {
           className={`${styles.section} ${styles.contactsSection}`}
         >
           <div className={styles.contactsCard}>
-            <div>
+            <div className={styles.contactsIntro}>
               <p className={styles.sectionKicker}>Сеть</p>
               <h2>Быстро переключиться между барами сети</h2>
-              <p className={styles.contactsCopy}>
-                Если эта точка не подходит, можно сразу открыть другую локацию
-                сети, не теряя контекст и не возвращаясь на главную.
-              </p>
 
               <div className={styles.contactActions}>
                 <a href={`tel:${bar.phoneE164}`}>Позвонить</a>
@@ -182,9 +183,8 @@ export default async function BarPage({ params }) {
               </div>
             </div>
 
-            <div className={styles.switchPanel}>
+            <div className={styles.switchSection}>
               <p className={styles.switchLabel}>Другие локации</p>
-              <p className={styles.switchHint}>Листайте, чтобы увидеть все локации</p>
               <div className={styles.switchGrid}>
                 {networkBars.map((networkBar) => {
                   const isCurrentBar = networkBar.slug === bar.slug;

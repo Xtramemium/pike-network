@@ -61,7 +61,7 @@
   color: var(--base-paper-strong);
   box-shadow: none;
   font-family: var(--font-display), sans-serif;
-  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  font-size: clamp(1.3rem, 1.9vw, 1.7rem);
   font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 1;
