@@ -24,6 +24,14 @@ export const metadata = {
   },
   description:
     'Сеть баров "Щука": главная страница сети и отдельные страницы баров с меню, событиями и контактами.',
+  icons: {
+    icon: [
+      { url: "/icon.svg?v=2", type: "image/svg+xml" },
+      { url: "/favicon.ico?v=2", sizes: "any" },
+    ],
+    shortcut: ["/favicon.ico?v=2"],
+    apple: [{ url: "/apple-icon.png?v=2", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 const ageGateBootScript = `
