@@ -68,15 +68,24 @@ export function BarHeroNav({ phoneDisplay, phoneE164, mapUrl }) {
 
         <button
           type="button"
-          className={styles.menuToggle}
+          className={`${styles.menuToggle} ${isOpen ? styles.menuToggleOpen : ""}`}
           onClick={toggleMenu}
           aria-expanded={isOpen}
           aria-controls="bar-mobile-nav"
           aria-label={isOpen ? "Закрыть меню" : "Открыть меню"}
         >
-          <span />
-          <span />
-          <span />
+          <span
+            aria-hidden="true"
+            className={`${styles.menuToggleLine} ${styles.menuToggleLineTop}`}
+          />
+          <span
+            aria-hidden="true"
+            className={`${styles.menuToggleLine} ${styles.menuToggleLineMiddle}`}
+          />
+          <span
+            aria-hidden="true"
+            className={`${styles.menuToggleLine} ${styles.menuToggleLineBottom}`}
+          />
         </button>
       </div>
 
@@ -89,17 +98,10 @@ export function BarHeroNav({ phoneDisplay, phoneE164, mapUrl }) {
       <aside
         id="bar-mobile-nav"
         className={`${styles.mobilePanel} ${isOpen ? styles.mobilePanelOpen : ""}`}
+        aria-hidden={!isOpen}
       >
         <div className={styles.mobileHeader}>
           <p>Навигация</p>
-          <button
-            type="button"
-            className={styles.closeButton}
-            onClick={closeMenu}
-            aria-label="Закрыть меню"
-          >
-            ×
-          </button>
         </div>
 
         <div className={styles.mobileBody}>

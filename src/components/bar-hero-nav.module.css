@@ -46,39 +46,89 @@
 
 .mobileRow {
   display: none;
-}
-
-.menuToggle,
-.closeButton {
-  border: 1px solid var(--paper-border-a16);
-  background:
-    linear-gradient(180deg, var(--white-a12), var(--white-a03)),
-    linear-gradient(180deg, var(--ink-a18), var(--ink-a26));
-  color: var(--color-text);
-  backdrop-filter: blur(18px) saturate(128%);
-  box-shadow:
-    inset 0 1px 0 var(--white-a12),
-    0 12px 28px var(--shadow-dark-a22);
-  cursor: pointer;
-  transition: var(--transition-glass);
+  position: relative;
+  z-index: 70;
 }
 
 .menuToggle {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-pill);
+  position: relative;
+  z-index: 70;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(255, 248, 239, 0.42);
+  border-radius: 50%;
   display: inline-flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  backdrop-filter: blur(12px);
+  flex-shrink: 0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 252, 245, 0.94), rgba(255, 244, 223, 0.88) 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+  color: var(--base-900);
+  backdrop-filter: blur(18px) saturate(132%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    0 12px 28px var(--shadow-dark-a24);
+  cursor: pointer;
+  transition:
+    transform var(--duration-medium) var(--ease-standard),
+    background-color var(--duration-medium) var(--ease-standard),
+    border-color var(--duration-medium) var(--ease-standard),
+    box-shadow var(--duration-medium) var(--ease-standard),
+    top var(--duration-medium) var(--ease-standard),
+    right var(--duration-medium) var(--ease-standard);
 }
 
-.menuToggle span {
-  width: 16px;
-  height: 1px;
+.menuToggleOpen {
+  position: fixed;
+  top: calc(22px + env(safe-area-inset-top));
+  right: 22px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 248, 239, 0.9), rgba(246, 230, 199, 0.82) 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    0 20px 42px var(--shadow-dark-a34);
+}
+
+.menuToggleLine {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
   background: currentColor;
+  transform-origin: center;
+  transition:
+    transform var(--duration-medium) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard),
+    width var(--duration-medium) var(--ease-standard);
+}
+
+.menuToggleLineTop {
+  transform: translate(-50%, calc(-50% - 7px));
+}
+
+.menuToggleLineMiddle {
+  transform: translate(-50%, -50%);
+}
+
+.menuToggleLineBottom {
+  transform: translate(-50%, calc(-50% + 7px));
+}
+
+.menuToggleOpen .menuToggleLineTop {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.menuToggleOpen .menuToggleLineMiddle {
+  opacity: 0;
+  transform: translate(-50%, -50%) scaleX(0.35);
+}
+
+.menuToggleOpen .menuToggleLineBottom {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .mobileOverlay {
@@ -110,7 +160,7 @@
   overflow-y: auto;
   width: 100vw;
   max-width: none;
-  padding: calc(28px + env(safe-area-inset-top)) 28px calc(24px + env(safe-area-inset-bottom));
+  padding: calc(94px + env(safe-area-inset-top)) 28px calc(24px + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -125,8 +175,8 @@
   pointer-events: none;
   transform: translateX(calc(100% + 40px));
   transition:
-    opacity var(--duration-fast) var(--ease-standard),
-    visibility var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-medium) var(--ease-standard),
+    visibility var(--duration-medium) var(--ease-standard),
     transform var(--duration-medium) var(--ease-standard),
     border-color var(--duration-medium) var(--ease-standard),
     background-color var(--duration-medium) var(--ease-standard),
@@ -175,8 +225,9 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  justify-content: flex-start;
+  min-height: 24px;
+  padding-right: 72px;
 }
 
 .mobileHeader p {
@@ -184,14 +235,6 @@
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.78rem;
-}
-
-.closeButton {
-  width: 54px;
-  height: 54px;
-  border-radius: var(--radius-pill);
-  font-size: 1.7rem;
-  line-height: 1;
 }
 
 .mobileBody {
@@ -254,11 +297,11 @@
   text-transform: uppercase;
 }
 
-  .mobileNavLabel {
-    padding-right: 48px;
-    font-size: 1.28rem;
-    line-height: 1.1;
-  }
+.mobileNavLabel {
+  padding-right: 48px;
+  font-size: 1.28rem;
+  line-height: 1.1;
+}
 
 .mobileQuickLinks {
   display: grid;
@@ -325,8 +368,7 @@
 .mobilePhone:focus-visible,
 .mobileMap:focus-visible,
 .mobileNavItem:focus-visible,
-.menuToggle:focus-visible,
-.closeButton:focus-visible {
+.menuToggle:focus-visible {
   outline: none;
   color: var(--color-text-strong);
   box-shadow:
@@ -362,15 +404,13 @@
   .mobilePhone:hover,
   .mobileMap:hover,
   .mobileNavItem:hover,
-  .menuToggle:hover,
-  .closeButton:hover {
+  .menuToggle:hover {
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.035)),
-      linear-gradient(180deg, rgba(42, 35, 31, 0.26), rgba(18, 14, 12, 0.18));
+      radial-gradient(circle at 30% 30%, rgba(255, 252, 245, 0.98), rgba(255, 244, 223, 0.94) 62%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05));
     color: var(--color-text-strong);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.18),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.04),
       0 24px 46px var(--shadow-dark-a24);
   }
 
@@ -407,9 +447,14 @@
   }
 
   .menuToggle,
-  .closeButton {
+  .menuToggleOpen {
     width: 48px;
     height: 48px;
+  }
+
+  .menuToggleOpen {
+    top: calc(18px + env(safe-area-inset-top));
+    right: 18px;
   }
 
   .mobileOverlay {
@@ -425,7 +470,7 @@
     bottom: 0;
     width: 100vw;
     padding:
-      calc(26px + env(safe-area-inset-top))
+      calc(88px + env(safe-area-inset-top))
       22px
       calc(22px + env(safe-area-inset-bottom));
     gap: 22px;
@@ -458,9 +503,9 @@
   .mobilePhone,
   .mobileNavItem,
   .menuToggle,
-  .closeButton,
   .mobileOverlay,
-  .mobilePanel {
+  .mobilePanel,
+  .menuToggleLine {
     transition: none;
   }
 }
