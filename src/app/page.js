@@ -62,43 +62,17 @@ export default async function HomePage() {
         <section id="bars" className={styles.section}>
           <div className={styles.sectionHeading}>
             <p className={styles.sectionKicker}>Точки сети</p>
-            <h2>Сначала выберите свою локацию, затем переходите внутрь бара</h2>
-            <p>
-              Блок работает как понятный навигатор по сети: пользователь сразу
-              видит все доступные бары и понимает, что именно у него есть на
-              выбор.
-            </p>
+            <h2>Сначала выберите свою локацию</h2>
+            <p>Откройте нужный бар, чтобы посмотреть меню, события и контакты.</p>
           </div>
           <NetworkPointsSection bars={bars} />
         </section>
 
         <section className={styles.section}>
           <div className={styles.sectionHeading}>
-            <p className={styles.sectionKicker}>Платформа</p>
-            <h2>Что уже закладываем в архитектуру сети</h2>
-            <p>
-              Мы не пытаемся натянуть один лендинг на две точки. Здесь уже
-              разведены роли главной страницы и локальных страниц баров.
-            </p>
-          </div>
-          <div className={styles.pillarGrid}>
-            {network.pillars.map((pillar) => (
-              <article key={pillar.title} className={styles.pillarCard}>
-                <h3>{pillar.title}</h3>
-                <p>{pillar.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <div className={styles.sectionHeading}>
             <p className={styles.sectionKicker}>Во всех точках</p>
-            <h2>Общий сценарий сети, который не теряется между локациями</h2>
-            <p>
-              Даже когда страницы точек отличаются по контенту, пользователь
-              всё равно должен узнавать единый бренд и базовый опыт Щуки.
-            </p>
+            <h2>Что вы найдете в каждой точке</h2>
+            <p>Базовый сценарий везде один: матч, еда, напитки и быстрый контакт.</p>
           </div>
           <div className={styles.commonGrid}>
             {network.commonFormats.map((item) => (

@@ -57,9 +57,7 @@ export function NetworkPointsSection({ bars }) {
         <p className={styles.pointsKicker}>Выбор бара</p>
         <div className={styles.pointsMeta}>
           <span className={styles.pointsCount}>{barsCountLabel}</span>
-          <p className={styles.pointsHint}>
-            Выберите удобную локацию и переходите сразу на страницу бара.
-          </p>
+          <p className={styles.pointsHint}>Выберите точку и откройте страницу бара.</p>
         </div>
       </div>
 
@@ -78,7 +76,7 @@ export function NetworkPointsSection({ bars }) {
             </span>
             <span className={styles.pointOptionName}>{bar.shortLabel}</span>
             <span className={styles.pointOptionAddress}>{bar.addressLine}</span>
-            <span className={styles.pointOptionMeta}>Страница бара, меню, события и контакты</span>
+            <span className={styles.pointOptionMeta}>Меню, события и контакты</span>
           </Link>
         ))}
       </div>

@@ -77,13 +77,14 @@ export default async function BarPage({ params }) {
             <BarHeroNav
               phoneDisplay={bar.phoneDisplay}
               phoneE164={bar.phoneE164}
+              mapUrl={bar.mapUrl}
             />
           </div>
 
           <div className={styles.heroStage}>
             <div className={styles.heroCopy}>
               <p className={styles.kicker}>{heroEyebrow}</p>
-              <h1 className={styles.srOnly}>{bar.shortLabel}</h1>
+              <h1 className={styles.heroBrand}>{bar.name}</h1>
               <p className={styles.heroLocation}>{heroLocation}</p>
 
               <div className={styles.heroMeta}>
@@ -93,16 +94,11 @@ export default async function BarPage({ params }) {
               </div>
 
               <div className={styles.actions}>
-                <a className={styles.secondaryAction} href={`tel:${bar.phoneE164}`}>
+                <a className={styles.primaryAction} href={`tel:${bar.phoneE164}`}>
                   Позвонить
                 </a>
-                <a
-                  className={styles.secondaryAction}
-                  href={bar.mapUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Показать на карте
+                <a className={styles.secondaryAction} href="#menu">
+                  Меню
                 </a>
               </div>
             </div>

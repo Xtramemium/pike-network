@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./bar-hero-nav.module.css";
 
-export function BarHeroNav({ phoneDisplay, phoneE164 }) {
+export function BarHeroNav({ phoneDisplay, phoneE164, mapUrl }) {
   const [isOpen, setIsOpen] = useState(false);
   const navItems = [
     { href: "#menu", label: "Меню" },
@@ -119,10 +119,22 @@ export function BarHeroNav({ phoneDisplay, phoneE164 }) {
             ))}
           </nav>
 
-          <a className={styles.mobilePhone} href={`tel:${phoneE164}`} onClick={closeMenu}>
-            <span className={styles.mobilePhoneLabel}>Бронь и контакт</span>
-            <span className={styles.mobilePhoneValue}>{phoneDisplay}</span>
-          </a>
+          <div className={styles.mobileQuickLinks}>
+            <a className={styles.mobilePhone} href={`tel:${phoneE164}`} onClick={closeMenu}>
+              <span className={styles.mobilePhoneLabel}>Бронь и контакт</span>
+              <span className={styles.mobilePhoneValue}>{phoneDisplay}</span>
+            </a>
+
+            <a
+              className={styles.mobileMap}
+              href={mapUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={closeMenu}
+            >
+              Показать на карте
+            </a>
+          </div>
         </div>
       </aside>
     </>

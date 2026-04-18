@@ -38,7 +38,6 @@
 .heroCopy h1,
 .sectionHeading h2,
 .barCard h3,
-.pillarCard h3,
 .commonCard h3 {
   font-family: var(--font-display), sans-serif;
 }
@@ -160,7 +159,6 @@
   line-height: 1.6;
 }
 
-.pillarGrid,
 .cardGrid,
 .commonGrid {
   display: grid;
@@ -169,7 +167,6 @@
 }
 
 .barCard,
-.pillarCard,
 .commonCard {
   position: relative;
   overflow: hidden;
@@ -183,7 +180,6 @@
 }
 
 .barCard::before,
-.pillarCard::before,
 .commonCard::before {
   content: "";
   position: absolute;
@@ -377,19 +373,16 @@
   color: var(--base-paper-strong);
 }
 
-.pillarCard,
 .commonCard {
   padding: 24px;
   transition: var(--transition-colors);
 }
 
-.pillarCard h3,
 .commonCard h3 {
   font-size: var(--type-display-card);
   line-height: 0.94;
 }
 
-.pillarCard p,
 .commonCard p {
   margin-top: 14px;
   color: var(--color-text-muted);
@@ -481,7 +474,6 @@
   }
 
   .cardBody,
-  .pillarCard,
   .commonCard,
   .faqCard {
     padding: 20px 18px 22px;
@@ -492,7 +484,6 @@
   }
 
   .cardSummary,
-  .pillarCard p,
   .commonCard p,
   .faqCard p {
     margin-top: 12px;
@@ -533,7 +524,6 @@
     box-shadow: none;
   }
 
-  .pillarCard:hover,
   .commonCard:hover,
   .faqCard:hover,
   .journeyItem:hover {
@@ -554,7 +544,6 @@
 
 @media (min-width: 760px) {
   .cardGrid,
-  .pillarGrid,
   .commonGrid,
   .faqGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -576,7 +565,6 @@
   .primaryAction,
   .secondaryAction,
   .cardLink,
-  .pillarCard,
   .commonCard,
   .faqCard,
   .journeyItem,
